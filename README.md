@@ -16,6 +16,7 @@ ssv.remove('mark tom travis', 'tom') // 'mark travis'
 ssv.add('mark travis', 'matt') // 'mark travis matt'
 ssv.admit('mark travis matt', 'matt') // 'mark travis matt'
 ssv.compact('  mark   travis   matt ') // 'mark travis matt'
+ssv.parse('mark tom travis') // ['mark', 'tom', 'travis']
 ```
 
 ## API
@@ -34,6 +35,9 @@ Add <var>value</var> to <var>SSV</var> string if unique
 
 ### ssv.remove(SSV, value)
 Remove <var>value</var> from <var>SSV</var> string
+
+### ssv.parse(SSV)
+Get array of values
 
 ## License
 MIT
