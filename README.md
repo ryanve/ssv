@@ -34,7 +34,7 @@ Add <var>value</var> to <var>SSV</var> string
 Add <var>value</var> to <var>SSV</var> string if unique
 
 ### ssv.remove(SSV, value)
-Remove <var>value</var> from <var>SSV</var> string
+Remove all instances of <var>value</var> from <var>SSV</var> string
 
 ### ssv.parse(SSV)
 Get array of values
