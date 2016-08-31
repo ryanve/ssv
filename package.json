@@ -15,7 +15,8 @@
     "ssv",
     "util",
     "utility",
-    "string"
+    "string",
+    "space"
   ],
   "author": "Ryan Van Etten",
   "license": "MIT",
