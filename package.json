@@ -1,0 +1,48 @@
+{
+  "name": "ssv",
+  "version": "1.0.0",
+  "description": "ssv (space-separated value) utils",
+  "main": "ssv.js",
+  "scripts": {
+    "lint": "jshint *.js",
+    "test": "npm run lint && node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanve/ssv.git"
+  },
+  "keywords": [
+    "ssv",
+    "util",
+    "utility",
+    "string"
+  ],
+  "author": "Ryan Van Etten",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryanve/ssv/issues"
+  },
+  "homepage": "https://github.com/ryanve/ssv#readme",
+  "devDependencies": {
+    "jshint": "^2.9.3"
+  },
+  "jshintConfig": {
+    "asi": true,
+    "boss": true,
+    "browser": true,
+    "debug": true,
+    "devel": true,
+    "eqnull": true,
+    "evil": true,
+    "expr": true,
+    "globals": {},
+    "latedef": "nofunc",
+    "laxcomma": true,
+    "maxerr": 5,
+    "node": true,
+    "sub": true,
+    "supernew": true,
+    "undef": true,
+    "unused": "vars"
+  }
+}
