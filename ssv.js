@@ -6,12 +6,12 @@
   var word = /\S+/g
   var space = ' '
 
-  function match(string) {
+  function parse(string) {
     return string.match(word) || []
   }
 
   function compact(ssv) {
-    return match(ssv).join(space)
+    return parse(ssv).join(space)
   }
 
   function pad(string) {
@@ -36,6 +36,7 @@
     return has(ssv, value) ? remove(ssv, value) : compact(ssv)
   }
 
+  api['parse'] = parse
   api['compact'] = compact
   api['has'] = has
   api['add'] = add

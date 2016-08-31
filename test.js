@@ -3,6 +3,13 @@
     if (actual !== correct) throw new Error(actual + ' should be ' + correct)
   }
 
+  expect(api.parse('').length, 0)
+  expect(api.parse(' ').length, 0)
+  expect(api.parse('yes').join('-'), 'yes')
+  expect(api.parse('yes no').join('-'), 'yes-no')
+  expect(api.parse(' yes no ').join('-'), 'yes-no')
+  console.log('#parse tests passed')
+
   expect(api.compact(''), '')
   expect(api.compact('    '), '')
   expect(api.compact('  yes  no  maybe  '), 'yes no maybe')
