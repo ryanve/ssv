@@ -1,6 +1,6 @@
 {
   "name": "ssv",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "ssv (space-separated value) utils",
   "main": "ssv.js",
   "scripts": {
@@ -15,7 +15,8 @@
     "ssv",
     "util",
     "utility",
-    "string"
+    "string",
+    "space"
   ],
   "author": "Ryan Van Etten",
   "license": "MIT",
