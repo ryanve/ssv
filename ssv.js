@@ -3,16 +3,15 @@
 }(this, 'ssv', function() {
 
   var api = {}
-  var ssv = /\S+/g
-  var empty = ''
+  var word = /\S+/g
   var space = ' '
 
   function match(string) {
-    return string.match(ssv) || []
+    return string.match(word) || []
   }
 
   function compact(ssv) {
-    return null == ssv ? empty : match(ssv).join(space)
+    return match(ssv).join(space)
   }
 
   function pad(string) {
@@ -20,11 +19,12 @@
   }
 
   function has(ssv, value) {
+    if (!ssv.match(word)) return false
     return -1 < pad(compact(ssv)).indexOf(pad(value))
   }
 
   function add(ssv, value) {
-    return ssv ? compact(ssv + space + value) : String(value)
+    return ssv.length ? compact(ssv + space + value) : String(value)
   }
 
   function admit(ssv, value) {
@@ -32,7 +32,8 @@
   }
 
   function remove(ssv, value) {
-    return compact(ssv.replace(new RegExp('(^|\\s+)' + value + '(\\s+|$)'), space))
+    ssv = pad(compact(ssv)).replace(pad(value), space)
+    return has(ssv, value) ? remove(ssv, value) : compact(ssv)
   }
 
   api['compact'] = compact
