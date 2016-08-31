@@ -13,6 +13,7 @@
   expect(api.compact(''), '')
   expect(api.compact('    '), '')
   expect(api.compact('  yes  no  maybe  '), 'yes no maybe')
+  expect(api.compact('\n yes \r no \t maybe \n\r\t'), 'yes no maybe')
   console.log('#compact tests passed')
 
   expect(api.has('', ''), false)
