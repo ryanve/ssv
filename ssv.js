@@ -15,8 +15,12 @@
     return null == ssv ? empty : match(ssv).join(space)
   }
 
+  function pad(string) {
+    return space + string + space
+  }
+
   function has(ssv, value) {
-    return -1 < (space + compact(ssv) + space).indexOf(space + value + space)
+    return -1 < pad(compact(ssv)).indexOf(pad(value))
   }
 
   function add(ssv, value) {
