@@ -23,12 +23,12 @@
     return -1 < pad(compact(ssv)).indexOf(pad(value))
   }
 
-  function add(ssv, value) {
+  function push(ssv, value) {
     return ssv.length ? compact(ssv + space + value) : String(value)
   }
 
-  function admit(ssv, value) {
-    return has(ssv, value) ? compact(ssv) : add(ssv, value)
+  function add(ssv, value) {
+    return has(ssv, value) ? compact(ssv) : push(ssv, value)
   }
 
   function remove(ssv, value) {
@@ -39,8 +39,8 @@
   api['parse'] = parse
   api['compact'] = compact
   api['has'] = has
+  api['push'] = push
   api['add'] = add
-  api['admit'] = admit
   api['remove'] = remove
   return api
 });
