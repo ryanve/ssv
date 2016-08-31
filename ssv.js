@@ -16,7 +16,7 @@
   }
 
   function has(ssv, value) {
-    return !!~(space + compact(ssv) + space).indexOf(space + value + space)
+    return -1 < (space + compact(ssv) + space).indexOf(space + value + space)
   }
 
   function add(ssv, value) {
