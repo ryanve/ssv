@@ -1,10 +1,10 @@
 {
   "name": "ssv",
-  "version": "2.0.0",
-  "description": "ssv (space-separated value) utils",
+  "version": "2.0.1",
+  "description": "SSV (space-separated value) utils",
   "main": "ssv.js",
   "scripts": {
-    "lint": "jshint *.js",
+    "lint": "jshint ssv.js && jshint test.js",
     "test": "npm run lint && node test.js"
   },
   "repository": {
@@ -16,6 +16,8 @@
     "util",
     "utility",
     "string",
+    "values",
+    "parse",
     "space"
   ],
   "author": "Ryan Van Etten",
