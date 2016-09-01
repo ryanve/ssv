@@ -4,7 +4,7 @@
   "description": "ssv (space-separated value) utils",
   "main": "ssv.js",
   "scripts": {
-    "lint": "jshint *.js",
+    "lint": "jshint ssv.js && jshint test.js",
     "test": "npm run lint && node test.js"
   },
   "repository": {
