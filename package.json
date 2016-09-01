@@ -16,6 +16,8 @@
     "util",
     "utility",
     "string",
+    "values",
+    "parse",
     "space"
   ],
   "author": "Ryan Van Etten",
