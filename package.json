@@ -1,7 +1,7 @@
 {
   "name": "ssv",
-  "version": "2.0.0",
-  "description": "ssv (space-separated value) utils",
+  "version": "2.0.1",
+  "description": "SSV (space-separated value) utils",
   "main": "ssv.js",
   "scripts": {
     "lint": "jshint ssv.js && jshint test.js",

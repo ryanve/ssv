@@ -1,5 +1,5 @@
 # ssv
-JavaScript SSV (space-separated value) utils
+JavaScript SSV (space-separated value) utility module
 
 ```sh
 npm install ssv --save
