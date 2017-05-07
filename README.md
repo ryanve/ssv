@@ -5,6 +5,10 @@ JavaScript SSV (space-separated value) utility module
 npm install ssv --save
 ```
 
+```
+yarn add ssv
+```
+
 ## Usage
 
 ```js
