@@ -24,7 +24,9 @@
   }
 
   function push(ssv, value) {
-    return ssv.length ? compact(ssv + space + value) : String(value)
+    ssv = parse(ssv)
+    ssv.push(value)
+    return ssv.join(space)
   }
 
   function add(ssv, value) {
