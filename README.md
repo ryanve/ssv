@@ -1,6 +1,7 @@
 # ssv
 JavaScript SSV (space-separated value) utility module
 
+## Setup
 ```
 npm install ssv --save
 ```
