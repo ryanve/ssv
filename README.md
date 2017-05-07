@@ -16,6 +16,7 @@ ssv.remove('mark tom travis', 'tom') // 'mark travis'
 ssv.add('mark travis', 'matt') // 'mark travis matt'
 ssv.add('mark travis', 'travis') // 'mark travis'
 ssv.push('mark travis', 'travis') // 'mark travis travis'
+ssv.pop('mark travis tom') // 'tom'
 ssv.compact('  mark   travis   matt ') // 'mark travis matt'
 ssv.parse('mark tom travis') // ['mark', 'tom', 'travis']
 ```
