@@ -27,6 +27,11 @@
   expect(api.has('  yes   no  ', 'yes'), true)
   console.log('#has tests passed')
 
+  expect(api.pop(''), '')
+  expect(api.pop('yes'), 'yes')
+  expect(api.pop('yes no'), 'no')
+  console.log('#pop tests passed')
+
   expect(api.push('', ''), '')
   expect(api.push('', 'yes'), 'yes')
   expect(api.push('yes no', 'maybe'), 'yes no maybe')

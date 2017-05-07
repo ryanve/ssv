@@ -34,6 +34,9 @@ Add <var>value</var> to <var>SSV</var> string if unique
 ### ssv.push(SSV, value)
 Add <var>value</var> to <var>SSV</var> string whether unique or not
 
+### ssv.pop(SSV, value)
+Get last SSV value
+
 ### ssv.compact(SSV)
 Normalize <var>SSV</var> string to a trim compact string
 

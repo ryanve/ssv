@@ -5,6 +5,7 @@
   var api = {}
   var word = /\S+/g
   var space = ' '
+  var empty = ''
 
   function parse(string) {
     return string.match(word) || []
@@ -21,6 +22,10 @@
   function has(ssv, value) {
     if (!ssv.match(word)) return false
     return -1 < pad(compact(ssv)).indexOf(pad(value))
+  }
+
+  function pop(ssv) {
+    return parse(ssv).pop() || empty
   }
 
   function push(ssv, value) {
@@ -41,6 +46,7 @@
   api['parse'] = parse
   api['compact'] = compact
   api['has'] = has
+  api['pop'] = pop
   api['push'] = push
   api['add'] = add
   api['remove'] = remove
