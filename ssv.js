@@ -7,12 +7,12 @@
   var space = ' '
   var empty = ''
 
-  function parse(string) {
+  function split(string) {
     return string.match(word) || []
   }
 
   function compact(ssv) {
-    return parse(ssv).join(space)
+    return split(ssv).join(space)
   }
 
   function pad(string) {
@@ -25,11 +25,11 @@
   }
 
   function pop(ssv) {
-    return parse(ssv).pop() || empty
+    return split(ssv).pop() || empty
   }
 
   function push(ssv, value) {
-    ssv = parse(ssv)
+    ssv = split(ssv)
     ssv.push(value)
     return ssv.join(space)
   }
@@ -43,7 +43,8 @@
     return has(ssv, value) ? remove(ssv, value) : compact(ssv)
   }
 
-  api['parse'] = parse
+
+  api['parse'] = api['split'] = split
   api['compact'] = compact
   api['has'] = has
   api['pop'] = pop
