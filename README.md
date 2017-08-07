@@ -23,7 +23,7 @@ ssv.add('mark travis', 'travis') // 'mark travis'
 ssv.push('mark travis', 'travis') // 'mark travis travis'
 ssv.pop('mark travis tom') // 'tom'
 ssv.compact('  mark   travis   matt ') // 'mark travis matt'
-ssv.parse('mark tom travis') // ['mark', 'tom', 'travis']
+ssv.split('mark tom travis') // ['mark', 'tom', 'travis']
 ```
 
 ## API
@@ -46,8 +46,8 @@ Get last SSV value
 ### ssv.compact(SSV)
 Normalize <var>SSV</var> string to a trim compact string
 
-### ssv.parse(SSV)
-Get array of values
+### ssv.split(SSV)
+Get array of values. Alias: `ssv.parse`
 
 ## License
 MIT
