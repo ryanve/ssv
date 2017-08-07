@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/ryanve/ssv#readme",
   "devDependencies": {
-    "jshint": "^2.9.3"
+    "jshint": "^2.9.5"
   },
   "jshintConfig": {
     "asi": true,
