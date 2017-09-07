@@ -28,6 +28,10 @@
     return split(ssv).pop() || empty
   }
 
+  function concat(ssv, more) {
+    return compact(ssv + space + more)
+  }
+
   function push(ssv, value) {
     ssv = split(ssv)
     ssv.push(value)
@@ -43,9 +47,9 @@
     return has(ssv, value) ? remove(ssv, value) : compact(ssv)
   }
 
-
   api['parse'] = api['split'] = split
   api['compact'] = compact
+  api['concat'] = concat
   api['has'] = has
   api['pop'] = pop
   api['push'] = push
