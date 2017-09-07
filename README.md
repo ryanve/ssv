@@ -22,6 +22,8 @@ ssv.add('mark travis', 'matt') // 'mark travis matt'
 ssv.add('mark travis', 'travis') // 'mark travis'
 ssv.push('mark travis', 'travis') // 'mark travis travis'
 ssv.pop('mark travis tom') // 'tom'
+ssv.concat('mark tom', 'travis matt') // 'mark tom travis matt'
+ssv.concat(' mark  tom ', ' travis  matt ') // 'mark tom travis matt'
 ssv.compact('  mark   travis   matt ') // 'mark travis matt'
 ssv.split('mark tom travis') // ['mark', 'tom', 'travis']
 ```
@@ -33,6 +35,9 @@ Test if <var>SSV</var> string contains <var>value</var>
 
 ### ssv.remove(SSV, value)
 Remove all instances of <var>value</var> from <var>SSV</var> string
+
+### ssv.concat(SSV, SSV2)
+Concatenate 2 SSV strings
 
 ### ssv.add(SSV, value)
 Add <var>value</var> to <var>SSV</var> string if unique

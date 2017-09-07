@@ -5,6 +5,7 @@ declare module ssv {
   export function add(ssv: string, value: string): string;
   export function remove(ssv: string, value: string): remove;
   export function compact(ssv: string): string;
+  export function concat(ssv: string, more: string): string;
   export function parse(ssv: string): string[];
   export function split(ssv: string): string[];
 }

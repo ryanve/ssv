@@ -33,6 +33,15 @@
   expect(api.pop('yes no'), 'no')
   console.log('#pop tests passed')
 
+  expect(api.concat('', ''), '')
+  expect(api.concat('', 'yes'), 'yes')
+  expect(api.concat('yes no', 'maybe'), 'yes no maybe')
+  expect(api.concat('yes no', 'maybe so'), 'yes no maybe so')
+  expect(api.concat('yes no', 'yes'), 'yes no yes')
+  expect(api.concat('  yes  no  ', '  maybe  so '), 'yes no maybe so')
+  expect(api.concat('  yes  no  ', 'yes'), 'yes no yes')
+  console.log('#concat tests passed')
+
   expect(api.push('', ''), '')
   expect(api.push('', 'yes'), 'yes')
   expect(api.push('yes no', 'maybe'), 'yes no maybe')
