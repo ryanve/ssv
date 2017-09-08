@@ -2,6 +2,7 @@
   typeof module != 'undefined' && module.exports ? module.exports = make() : root[name] = make()
 }(this, 'ssv', function() {
 
+  var vacant
   var api = {}
   var word = /\S+/g
   var space = ' '
@@ -32,6 +33,13 @@
     return compact(ssv + space + more)
   }
 
+  function slice(ssv, begin, end) {
+    ssv = split(ssv)
+    if (vacant === begin) begin = 0
+    if (vacant === end) end = ssv.length
+    return ssv.slice(begin, end).join(space)
+  }
+
   function push(ssv, value) {
     ssv = split(ssv)
     ssv.push(value)
@@ -55,5 +63,6 @@
   api['push'] = push
   api['add'] = add
   api['remove'] = remove
+  api['slice'] = slice
   return api
 });

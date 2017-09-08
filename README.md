@@ -22,6 +22,9 @@ ssv.add('mark travis', 'matt') // 'mark travis matt'
 ssv.add('mark travis', 'travis') // 'mark travis'
 ssv.push('mark travis', 'travis') // 'mark travis travis'
 ssv.pop('mark travis tom') // 'tom'
+ssv.slice('travis mark tom', 1) // 'mark tom'
+ssv.slice('travis mark tom', -1) // 'tom'
+ssv.slice(' travis mark tom', 0, 1) // 'travis'
 ssv.concat('mark tom', 'travis matt') // 'mark tom travis matt'
 ssv.concat(' mark  tom ', ' travis  matt ') // 'mark tom travis matt'
 ssv.compact('  mark   travis   matt ') // 'mark travis matt'
@@ -47,6 +50,9 @@ Add <var>value</var> to <var>SSV</var> string whether unique or not
 
 ### ssv.pop(SSV, value)
 Get last SSV value
+
+### ssv.slice(SSV, begin, end)
+Slice SSV values per `[].slice`
 
 ### ssv.compact(SSV)
 Normalize <var>SSV</var> string to a trim compact string
