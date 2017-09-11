@@ -33,6 +33,17 @@
     return compact(ssv + space + more)
   }
 
+  function uniq(ssv) {
+    ssv = split(ssv)
+    var u = []
+    var l = ssv.length
+    outer:for (var i = 0; i < l; i++) {
+      for (var j = u.length; j--;) if (ssv[i] === u[j]) continue outer
+      u.push(ssv[i])
+    }
+    return u.join(space)
+  }
+
   function slice(ssv, begin, end) {
     ssv = split(ssv)
     if (vacant === begin) begin = 0
@@ -64,5 +75,6 @@
   api['add'] = add
   api['remove'] = remove
   api['slice'] = slice
+  api['uniq'] = uniq
   return api
 });

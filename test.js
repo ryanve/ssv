@@ -55,6 +55,12 @@
   expect(api.concat('  yes  no  ', 'yes'), 'yes no yes')
   console.log('#concat tests passed')
 
+  expect(api.uniq(''), '')
+  expect(api.uniq('yes no yes'), 'yes no')
+  expect(api.uniq('yes no yes yes no no yes'), 'yes no')
+  expect(api.uniq('yes no Yes'), 'yes no Yes')
+  console.log('#uniq tests passed')
+
   expect(api.push('', ''), '')
   expect(api.push('', 'yes'), 'yes')
   expect(api.push('yes no', 'maybe'), 'yes no maybe')
