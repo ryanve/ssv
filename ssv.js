@@ -66,7 +66,6 @@
     return has(ssv, value) ? remove(ssv, value) : compact(ssv)
   }
 
-
   api['add'] = add
   api['compact'] = compact
   api['concat'] = concat
