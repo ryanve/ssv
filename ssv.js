@@ -66,15 +66,16 @@
     return has(ssv, value) ? remove(ssv, value) : compact(ssv)
   }
 
-  api['parse'] = api['split'] = split
+  api['add'] = add
   api['compact'] = compact
   api['concat'] = concat
   api['has'] = has
+  api['parse'] = split // alias
   api['pop'] = pop
   api['push'] = push
-  api['add'] = add
   api['remove'] = remove
   api['slice'] = slice
+  api['split'] = split
   api['uniq'] = uniq
   return api
 });
