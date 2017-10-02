@@ -9,6 +9,7 @@ declare module ssv {
   export function parse(ssv: string): string[];
   export function split(ssv: string): string[];
   export function slice(ssv: string, begin?: number, end?: number): string;
+  export function uniq(ssv: string): string;
 }
 
 declare module "ssv" {
