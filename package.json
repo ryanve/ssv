@@ -1,6 +1,6 @@
 {
   "name": "ssv",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "SSV (space-separated value) utils",
   "main": "ssv.js",
   "types": "ssv.d.ts",
