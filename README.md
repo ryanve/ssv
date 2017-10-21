@@ -13,7 +13,7 @@ yarn add ssv
 ## Usage
 
 ```js
-var ssv = require('ssv')
+const ssv = require('ssv')
 
 ssv.has('mark tom travis', 'matt') // false
 ssv.has('mark tom travis', 'mark') // true
