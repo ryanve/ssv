@@ -2,12 +2,9 @@
 JavaScript SSV (space-separated value) utility module
 
 ## Setup
-```
-npm install ssv --save
-```
 
 ```
-yarn add ssv
+npm install ssv
 ```
 
 ## Usage
