@@ -24,6 +24,9 @@ ssv.slice('travis mark tom', -1) // 'tom'
 ssv.slice(' travis mark tom', 0, 1) // 'travis'
 ssv.concat('mark tom', 'travis matt') // 'mark tom travis matt'
 ssv.concat(' mark  tom ', ' travis  matt ') // 'mark tom travis matt'
+ssv.union('mark tom ', 'travis tom') // 'mark tom travis'
+ssv.union('mark tom tom', 'travis tom') // 'mark tom travis'
+ssv.union('matt mark', 'matt') // 'matt mark'
 ssv.compact('  mark   travis   matt ') // 'mark travis matt'
 ssv.split('mark tom travis') // ['mark', 'tom', 'travis']
 ssv.split(' mark  tom  travis ') // ['mark', 'tom', 'travis']
@@ -58,6 +61,9 @@ Normalize <var>SSV</var> string to a trim compact string
 
 ### ssv.split(SSV)
 Get compact array of values. Alias: `ssv.parse`
+
+### ssv.union(SSV, SSV2)
+Get the union of 2 SSV strings (unique values present in either)
 
 ### ssv.uniq(SSV)
 Get unique <var>SSV</var> string
