@@ -70,9 +70,29 @@
     return has(ssv, value) ? remove(ssv, value) : compact(ssv)
   }
 
+  function diff(ssv, less) {
+    less = split(less)
+    var l = less.length
+    if (!l) return compact(ssv)
+    ssv = split(ssv)
+    var n = ssv.length
+    if (!n) return empty
+    var r = []
+    var i = 0
+    var skip = {}
+    while (i < l) skip[less[i++]] = less
+    for (i = 0; i < n; i++) {
+      if (skip[ssv[i]] !== less) {
+        r.push(ssv[i])
+      }
+    }
+    return r.join(space)
+  }
+
   api['add'] = add
   api['compact'] = compact
   api['concat'] = concat
+  api['diff'] = diff
   api['has'] = has
   api['parse'] = split // alias
   api['pop'] = pop

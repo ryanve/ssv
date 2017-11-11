@@ -72,6 +72,18 @@
   expect(api.union('yes yes yes', 'no'), 'yes no')
   console.log('#union tests passed')
 
+  expect(api.diff('', ''), '')
+  expect(api.diff('', 'yes'), '')
+  expect(api.diff('yes no', 'maybe'), 'yes no')
+  expect(api.diff('yes no', 'maybe no'), 'yes')
+  expect(api.diff('yes no', 'yes'), 'no')
+  expect(api.diff('  yes no  ', ' maybe  no '), 'yes')
+  expect(api.diff('  yes no no', 'yes yes'), 'no no')
+  expect(api.diff('yes yes yes', ''), 'yes yes yes')
+  expect(api.diff('yes yes', 'no no'), 'yes yes')
+  expect(api.diff('yes no maybe so', 'no so'), 'yes maybe')
+  console.log('#diff tests passed')
+
   expect(api.push('', ''), '')
   expect(api.push('', 'yes'), 'yes')
   expect(api.push('yes no', 'maybe'), 'yes no maybe')

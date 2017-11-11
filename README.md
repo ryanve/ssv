@@ -40,6 +40,7 @@ ssv.uniq('travis travis tom travis tom') // 'travis tom'
 
 ### `ssv.remove(SSV, value)`
 - Remove all instances of <var>value</var> from <var>SSV</var> string
+- If you need to remove multiple values then use `ssv.diff`
 
 ### `ssv.concat(SSV, SSV2)`
 - Concatenate 2 SSV strings
@@ -66,6 +67,9 @@ ssv.uniq('travis travis tom travis tom') // 'travis tom'
 
 ### `ssv.union(SSV, SSV2)`
 - Get the union of 2 SSV strings (unique values present in either)
+
+### `ssv.diff(SSV, SSV2)`
+- Get the difference of 2 SSV strings (values in first not present in second)
 
 ### `ssv.uniq(SSV)`
 - Get unique <var>SSV</var> string
