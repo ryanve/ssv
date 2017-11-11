@@ -46,9 +46,11 @@ Concatenate 2 SSV strings
 
 ### ssv.add(SSV, value)
 Add <var>value</var> to <var>SSV</var> string if unique
+If you need to add multiple values then use `ssv.union`
 
 ### ssv.push(SSV, value)
 Add <var>value</var> to <var>SSV</var> string whether unique or not
+If you need to add multiple values then use `ssv.concat`
 
 ### ssv.pop(SSV, value)
 Get last SSV value
