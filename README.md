@@ -43,6 +43,9 @@ ssv.uniq('travis travis tom travis tom') // 'travis tom'
 ### `ssv.has(SSV, value)`
 - Test if <var>SSV</var> string contains <var>value</var>
 
+### `ssv.any(SSV1, SSV2)`
+- Test if <var>SSV1</var> contains any <var>SSV2</var> values
+
 ### `ssv.remove(SSV, value)`
 - Remove all instances of <var>value</var> from <var>SSV</var> string
 - If you need to remove multiple values then use `ssv.diff`
