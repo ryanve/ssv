@@ -77,10 +77,6 @@
     return ssv.join(space)
   }
 
-  function add(ssv, value) {
-    return has(ssv, value) ? compact(ssv) : push(ssv, value)
-  }
-
   function diff(ssv, less) {
     less = split(less)
     var l = less.length
@@ -100,7 +96,6 @@
     return r.join(space)
   }
 
-  api['add'] = add
   api['any'] = any
   api['compact'] = compact
   api['concat'] = concat

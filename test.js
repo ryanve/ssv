@@ -107,11 +107,5 @@
   expect(api.push('  mark  tom  ', 'mark'), 'mark tom mark')
   console.log('#push tests passed')
 
-  expect(api.add('mark tom', 'mark'), 'mark tom')
-  expect(api.add('mark tom', 'travis'), 'mark tom travis')
-  expect(api.add('  mark   tom  ', 'mark'), 'mark tom')
-  expect(api.add('  mark  tom  ', 'travis'), 'mark tom travis')
-  console.log('#add tests passed')
-
   console.log('All tests passed =)')
 }(require('./'));

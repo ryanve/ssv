@@ -1,5 +1,4 @@
 declare module ssv {
-  export function add(ssv: string, value: string): string;
   export function any(ssv: string, search: string): boolean;
   export function compact(ssv: string): string;
   export function concat(ssv: string, more: string): string;
