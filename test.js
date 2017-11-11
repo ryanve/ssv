@@ -45,11 +45,6 @@
   expect(api.slice('mark tom scott', 1, -1), 'tom')
   console.log('#slice tests passed')
 
-  expect(api.pop(''), '')
-  expect(api.pop('mark'), 'mark')
-  expect(api.pop('mark tom'), 'tom')
-  console.log('#pop tests passed')
-
   expect(api.concat('', ''), '')
   expect(api.concat('', 'mark'), 'mark')
   expect(api.concat('mark tom', 'travis'), 'mark tom travis')

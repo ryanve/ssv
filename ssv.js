@@ -32,10 +32,6 @@
     return false
   }
 
-  function pop(ssv) {
-    return split(ssv).pop() || empty
-  }
-
   function concat(ssv, more) {
     return compact(ssv + space + more)
   }
@@ -86,7 +82,6 @@
   api['concat'] = concat
   api['diff'] = diff
   api['parse'] = split // alias
-  api['pop'] = pop
   api['slice'] = slice
   api['split'] = split
   api['union'] = union
