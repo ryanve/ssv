@@ -16,15 +16,6 @@
     return split(ssv).join(space)
   }
 
-  function pad(string) {
-    return space + string + space
-  }
-
-  function has(ssv, value) {
-    if (!ssv.match(word)) return false
-    return -1 < pad(compact(ssv)).indexOf(pad(value))
-  }
-
   function any(ssv, search) {
     search = split(search)
     var l = search.length
@@ -94,7 +85,6 @@
   api['compact'] = compact
   api['concat'] = concat
   api['diff'] = diff
-  api['has'] = has
   api['parse'] = split // alias
   api['pop'] = pop
   api['slice'] = slice

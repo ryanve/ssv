@@ -12,8 +12,6 @@ npm install ssv
 ```js
 const ssv = require('ssv')
 
-ssv.has('mark tom travis', 'matt') // false
-ssv.has('mark tom travis', 'mark') // true
 ssv.any('mark tom travis', 'matt') // false
 ssv.any('mark tom travis', 'mark') // true
 ssv.any('mark tom travis', 'mark scott') // true
@@ -35,9 +33,6 @@ ssv.uniq('travis travis tom travis tom') // 'travis tom'
 ```
 
 ## API
-
-### `ssv.has(SSV, value)`
-- Test if <var>SSV</var> string contains <var>value</var>
 
 ### `ssv.any(SSV1, SSV2)`
 - Test if <var>SSV1</var> contains any <var>SSV2</var> values

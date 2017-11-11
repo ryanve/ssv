@@ -17,17 +17,6 @@
   expect(api.compact('\n mark \r tom \t travis \n\r\t'), 'mark tom travis')
   console.log('#compact tests passed')
 
-  expect(api.has('', ''), false)
-  expect(api.has('', ' '), false)
-  expect(api.has(' ', ' '), false)
-  expect(api.has('mark tom', ''), false)
-  expect(api.has('mark tom', ' '), false)
-  expect(api.has('mark tom', 'tom'), true)
-  expect(api.has('mark tom', 'mark'), true)
-  expect(api.has('mark tom', 'travis'), false)
-  expect(api.has('  mark   tom  ', 'mark'), true)
-  console.log('#has tests passed')
-
   expect(api.any('', ''), false)
   expect(api.any('', ' '), false)
   expect(api.any(' ', ' '), false)
