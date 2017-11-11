@@ -81,11 +81,6 @@
     return has(ssv, value) ? compact(ssv) : push(ssv, value)
   }
 
-  function remove(ssv, value) {
-    ssv = pad(compact(ssv)).replace(pad(value), space)
-    return has(ssv, value) ? remove(ssv, value) : compact(ssv)
-  }
-
   function diff(ssv, less) {
     less = split(less)
     var l = less.length
@@ -114,7 +109,6 @@
   api['parse'] = split // alias
   api['pop'] = pop
   api['push'] = push
-  api['remove'] = remove
   api['slice'] = slice
   api['split'] = split
   api['union'] = union

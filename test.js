@@ -113,18 +113,5 @@
   expect(api.add('  mark  tom  ', 'travis'), 'mark tom travis')
   console.log('#add tests passed')
 
-  expect(api.remove('', 'mark'), '')
-  expect(api.remove('mark tom travis', 'travis'), 'mark tom')
-  expect(api.remove('mark tom travis', 'mark'), 'tom travis')
-  expect(api.remove('mark tom travis', 'tom'), 'mark travis')
-  expect(api.remove('mark tom travis tom', 'tom'), 'mark travis')
-  expect(api.remove('mark tom tom travis', 'tom'), 'mark travis')
-  expect(api.remove('  mark  tom  travis  ', 'travis'), 'mark tom')
-  expect(api.remove('  mark  tom  travis  ', 'mark'), 'tom travis')
-  expect(api.remove('  mark  tom  travis  ', 'tom'), 'mark travis')
-  expect(api.remove('  mark  tom  travis tom', 'tom'), 'mark travis')
-  expect(api.remove('  mark  tom  tom travis', 'tom'), 'mark travis')
-  console.log('#remove tests passed')
-
   console.log('All tests passed =)')
 }(require('./'));
