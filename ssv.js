@@ -71,12 +71,6 @@
     return ssv.slice(begin, end).join(space)
   }
 
-  function push(ssv, value) {
-    ssv = split(ssv)
-    ssv.push(value)
-    return ssv.join(space)
-  }
-
   function diff(ssv, less) {
     less = split(less)
     var l = less.length
@@ -103,7 +97,6 @@
   api['has'] = has
   api['parse'] = split // alias
   api['pop'] = pop
-  api['push'] = push
   api['slice'] = slice
   api['split'] = split
   api['union'] = union

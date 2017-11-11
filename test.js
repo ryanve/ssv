@@ -99,13 +99,5 @@
   expect(api.diff('mark tom travis matt', 'tom matt'), 'mark travis')
   console.log('#diff tests passed')
 
-  expect(api.push('', ''), '')
-  expect(api.push('', 'mark'), 'mark')
-  expect(api.push('mark tom', 'travis'), 'mark tom travis')
-  expect(api.push('mark tom', 'mark'), 'mark tom mark')
-  expect(api.push('  mark  tom  ', 'travis'), 'mark tom travis')
-  expect(api.push('  mark  tom  ', 'mark'), 'mark tom mark')
-  console.log('#push tests passed')
-
   console.log('All tests passed =)')
 }(require('./'));

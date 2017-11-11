@@ -6,7 +6,6 @@ declare module ssv {
   export function has(ssv: string, value: string): boolean;
   export function parse(ssv: string): string[];
   export function pop(ssv: string): string;
-  export function push(ssv: string, value: string): string;
   export function split(ssv: string): string[];
   export function slice(ssv: string, begin?: number, end?: number): string;
   export function union(ssv: string, more: string): string;

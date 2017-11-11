@@ -17,7 +17,6 @@ ssv.has('mark tom travis', 'mark') // true
 ssv.any('mark tom travis', 'matt') // false
 ssv.any('mark tom travis', 'mark') // true
 ssv.any('mark tom travis', 'mark scott') // true
-ssv.push('mark travis', 'travis') // 'mark travis travis'
 ssv.pop('mark travis tom') // 'tom'
 ssv.slice('travis mark tom', 1) // 'mark tom'
 ssv.slice('travis mark tom', -1) // 'tom'
@@ -45,10 +44,6 @@ ssv.uniq('travis travis tom travis tom') // 'travis tom'
 
 ### `ssv.concat(SSV, SSV2)`
 - Concatenate 2 SSV strings
-
-### `ssv.push(SSV, value)`
-- Add <var>value</var> to <var>SSV</var> string whether unique or not
-- If you need to add multiple values then use `ssv.concat`
 
 ### `ssv.pop(SSV, value)`
 - Get last SSV value
