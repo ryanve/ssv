@@ -27,6 +27,8 @@ ssv.concat(' mark  tom ', ' travis  matt ') // 'mark tom travis matt'
 ssv.union('mark tom ', 'travis tom') // 'mark tom travis'
 ssv.union('mark tom tom', 'travis tom') // 'mark tom travis'
 ssv.union('matt mark', 'matt') // 'matt mark'
+ssv.diff('mark tom travis', 'tom') // 'mark travis'
+ssv.diff('mark tom tom', 'mark matt') // 'tom tom'
 ssv.compact('  mark   travis   matt ') // 'mark travis matt'
 ssv.split('mark tom travis') // ['mark', 'tom', 'travis']
 ssv.split(' mark  tom  travis ') // ['mark', 'tom', 'travis']
