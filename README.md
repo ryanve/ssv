@@ -14,6 +14,9 @@ const ssv = require('ssv')
 
 ssv.has('mark tom travis', 'matt') // false
 ssv.has('mark tom travis', 'mark') // true
+ssv.any('mark tom travis', 'matt') // false
+ssv.any('mark tom travis', 'mark') // true
+ssv.any('mark tom travis', 'mark scott') // true
 ssv.remove('mark tom travis', 'tom') // 'mark travis'
 ssv.add('mark travis', 'matt') // 'mark travis matt'
 ssv.add('mark travis', 'travis') // 'mark travis'
@@ -39,6 +42,9 @@ ssv.uniq('travis travis tom travis tom') // 'travis tom'
 
 ### `ssv.has(SSV, value)`
 - Test if <var>SSV</var> string contains <var>value</var>
+
+### `ssv.any(SSV1, SSV2)`
+- Test if <var>SSV1</var> contains any <var>SSV2</var> values
 
 ### `ssv.remove(SSV, value)`
 - Remove all instances of <var>value</var> from <var>SSV</var> string

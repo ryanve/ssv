@@ -25,6 +25,22 @@
     return -1 < pad(compact(ssv)).indexOf(pad(value))
   }
 
+  function any(ssv, search) {
+    search = split(search)
+    var l = search.length
+    if (!l) return false
+    ssv = split(ssv)
+    var n = ssv.length
+    for (var j = 0; j < n; j++) {
+      for (var i = 0; i < l; i++) {
+        if (ssv[j] === search[i]) {
+          return true
+        }
+      }
+    }
+    return false
+  }
+
   function pop(ssv) {
     return split(ssv).pop() || empty
   }
@@ -90,6 +106,7 @@
   }
 
   api['add'] = add
+  api['any'] = any
   api['compact'] = compact
   api['concat'] = concat
   api['diff'] = diff
