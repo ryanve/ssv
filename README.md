@@ -14,6 +14,9 @@ const ssv = require('ssv')
 
 ssv.has('mark tom travis', 'matt') // false
 ssv.has('mark tom travis', 'mark') // true
+ssv.any('mark tom travis', 'matt') // false
+ssv.any('mark tom travis', 'mark') // true
+ssv.any('mark tom travis', 'mark scott') // true
 ssv.remove('mark tom travis', 'tom') // 'mark travis'
 ssv.add('mark travis', 'matt') // 'mark travis matt'
 ssv.add('mark travis', 'travis') // 'mark travis'
