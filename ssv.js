@@ -33,6 +33,10 @@
     return compact(ssv + space + more)
   }
 
+  function union(ssv, more) {
+    return uniq(concat(ssv, more))
+  }
+
   function uniq(ssv) {
     ssv = split(ssv)
     var u = []
@@ -76,6 +80,7 @@
   api['remove'] = remove
   api['slice'] = slice
   api['split'] = split
+  api['union'] = union
   api['uniq'] = uniq
   return api
 });

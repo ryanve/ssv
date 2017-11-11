@@ -61,6 +61,17 @@
   expect(api.uniq('yes no Yes'), 'yes no Yes')
   console.log('#uniq tests passed')
 
+  expect(api.union('', ''), '')
+  expect(api.union('', 'yes'), 'yes')
+  expect(api.union('yes no', 'maybe'), 'yes no maybe')
+  expect(api.union('yes no', 'maybe so'), 'yes no maybe so')
+  expect(api.union('yes no', 'yes'), 'yes no')
+  expect(api.union('  yes  no  ', '  maybe  so '), 'yes no maybe so')
+  expect(api.union('  yes  no  ', 'yes'), 'yes no')
+  expect(api.union('yes yes yes', ''), 'yes')
+  expect(api.union('yes yes yes', 'no'), 'yes no')
+  console.log('#union tests passed')
+
   expect(api.push('', ''), '')
   expect(api.push('', 'yes'), 'yes')
   expect(api.push('yes no', 'maybe'), 'yes no maybe')
