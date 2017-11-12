@@ -6,8 +6,8 @@
   "types": "ssv.d.ts",
   "typings": "ssv.d.ts",
   "scripts": {
-    "lint": "jshint ssv.js && jshint test.js",
-    "test": "npm run lint && node test.js"
+    "pretest": "eslint .",
+    "test": "node test"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/ryanve/ssv#readme",
   "devDependencies": {
-    "jshint": "^2.9.5"
+    "eslint": "^4.11.0"
   },
   "jshintConfig": {
     "asi": true,
