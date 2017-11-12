@@ -40,32 +40,32 @@ ssv.uniq("travis travis tom travis tom") // "travis tom"
 
 ### `ssv.all(SSV, SSV2)`
 - Test if <var>SSV</var> contains **all** <var>SSV2</var> values
-- **@return** boolean
+- `@return` boolean
 
 ### `ssv.any(SSV, SSV2)`
 - Test if <var>SSV</var> contains **any** <var>SSV2</var> values
-- **@return** boolean
+- `@return` boolean
 
 ### `ssv.compact(SSV)`
 - Normalize <var>SSV</var> string to a trim compact string
-- **@return** string
+- `@return` string
 
 ### `ssv.concat(SSV, SSV2)`
 - Concatenate 2 SSV strings
-- **@return** string
+- `@return` string
 
 ### `ssv.diff(SSV, SSV2)`
 - Get the difference of 2 SSV strings (values in first not present in second)
-- **@return** string
+- `@return` string
 
 ### `ssv.split(SSV)`
 - Split <var>SSV</var> into compact array of values
-- **@return** array
+- `@return` array
 
 ### `ssv.union(SSV, SSV2)`
 - Get the union of 2 SSV strings (unique values present in either)
-- **@return** string
+- `@return` string
 
 ### `ssv.uniq(SSV)`
 - Get unique <var>SSV</var> string
-- **@return** string
+- `@return` string
