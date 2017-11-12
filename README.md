@@ -50,6 +50,3 @@ ssv.uniq("travis travis tom travis tom") // "travis tom"
 
 ### `ssv.uniq(SSV)`
 - Get unique <var>SSV</var> string
-
-## License
-MIT
