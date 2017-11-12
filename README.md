@@ -34,7 +34,7 @@ ssv.uniq("travis travis tom travis tom") // "travis tom"
 ## API
 
 ### `ssv.any(SSV, SSV2)`
-- Test if <var>SSV</var> contains any <var>moreSSV</var> values
+- Test if <var>SSV</var> contains any <var>SSV2</var> values
 - **@return** boolean
 
 ### `ssv.compact(SSV)`
