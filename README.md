@@ -38,7 +38,7 @@ ssv.uniq("travis travis tom travis tom") // "travis tom"
 
 ## API
 
-### `ssv.any(SSV, SSV2)`
+### `ssv.all(SSV, SSV2)`
 - Test if <var>SSV</var> contains all <var>SSV2</var> values
 - **@return** boolean
 
