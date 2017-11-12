@@ -1,3 +1,4 @@
+
 # ssv
 Opensource JavaScript module for working with <b>space-separated values</b>
 
@@ -8,7 +9,6 @@ npm install ssv
 ```
 
 ## Usage
-
 
 ```js
 const ssv = require("ssv")
@@ -23,8 +23,12 @@ ssv.any("mark tom travis", "matt") // false
 ssv.any("mark tom travis", "mark") // true
 ssv.any("mark tom travis", "mark scott") // true
 ssv.any("mark tom travis", "mark travis") // true
+```
+
+```js
+ssv.split("mark tom travis") // ["mark", "tom", "travis"]
+ssv.split(" mark  tom  travis ") // ["mark", "tom", "travis"]
 ssv.compact("  mark   travis   matt ") // "mark travis matt"
-ssv.concat("mark tom", "travis matt") // "mark tom travis matt"
 ssv.concat(" mark  tom ", " travis  matt ") // "mark tom travis matt"
 ssv.diff("mark tom travis", "tom") // "mark travis"
 ssv.diff("mark tom tom", "mark matt") // "tom tom"
@@ -34,9 +38,7 @@ ssv.diff("mark tom tom tom", "tom") // "mark"
 ssv.union("mark tom ", "travis tom") // "mark tom travis"
 ssv.union("mark tom tom", "travis tom") // "mark tom travis"
 ssv.union("matt mark", "matt") // "matt mark"
-ssv.split("mark tom travis") // ["mark", "tom", "travis"]
-ssv.split(" mark  tom  travis ") // ["mark", "tom", "travis"]
-ssv.uniq("travis travis tom travis tom") // "travis tom"
+ssv.uniq(" travis travis  tom  travis ") // "travis tom"
 ssv.xor("", "mark mark") // "mark"
 ssv.xor("mark tom", "mark") // "tom"
 ssv.xor("mark tom", "travis") // "mark tom travis"
