@@ -15,9 +15,14 @@ const ssv = require("ssv")
 ```
 
 ```js
+ssv.all("mark tom travis", "matt") // false
+ssv.all("mark tom travis", "mark") // true
+ssv.all("mark tom travis", "mark scott") // false
+ssv.all("mark tom travis", "mark travis") // true
 ssv.any("mark tom travis", "matt") // false
 ssv.any("mark tom travis", "mark") // true
 ssv.any("mark tom travis", "mark scott") // true
+ssv.any("mark tom travis", "mark travis") // true
 ssv.compact("  mark   travis   matt ") // "mark travis matt"
 ssv.concat("mark tom", "travis matt") // "mark tom travis matt"
 ssv.concat(" mark  tom ", " travis  matt ") // "mark tom travis matt"
@@ -32,6 +37,10 @@ ssv.uniq("travis travis tom travis tom") // "travis tom"
 ```
 
 ## API
+
+### `ssv.any(SSV, SSV2)`
+- Test if <var>SSV</var> contains all <var>SSV2</var> values
+- **@return** boolean
 
 ### `ssv.any(SSV, SSV2)`
 - Test if <var>SSV</var> contains any <var>SSV2</var> values
