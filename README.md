@@ -15,9 +15,6 @@ const ssv = require('ssv')
 ssv.any('mark tom travis', 'matt') // false
 ssv.any('mark tom travis', 'mark') // true
 ssv.any('mark tom travis', 'mark scott') // true
-ssv.slice('travis mark tom', 1) // 'mark tom'
-ssv.slice('travis mark tom', -1) // 'tom'
-ssv.slice(' travis mark tom', 0, 1) // 'travis'
 ssv.concat('mark tom', 'travis matt') // 'mark tom travis matt'
 ssv.concat(' mark  tom ', ' travis  matt ') // 'mark tom travis matt'
 ssv.union('mark tom ', 'travis tom') // 'mark tom travis'
@@ -38,9 +35,6 @@ ssv.uniq('travis travis tom travis tom') // 'travis tom'
 
 ### `ssv.concat(SSV, SSV2)`
 - Concatenate 2 SSV strings
-
-### `ssv.slice(SSV, begin, end)`
-- Slice SSV values per `[].slice`
 
 ### `ssv.compact(SSV)`
 - Normalize <var>SSV</var> string to a trim compact string

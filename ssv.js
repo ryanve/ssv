@@ -2,7 +2,6 @@
   typeof module != 'undefined' && module.exports ? module.exports = make() : root[name] = make()
 }(this, 'ssv', function() {
 
-  var vacant
   var api = {}
   var word = /\S+/g
   var space = ' '
@@ -51,13 +50,6 @@
     return u.join(space)
   }
 
-  function slice(ssv, begin, end) {
-    ssv = split(ssv)
-    if (vacant === begin) begin = 0
-    if (vacant === end) end = ssv.length
-    return ssv.slice(begin, end).join(space)
-  }
-
   function diff(ssv, less) {
     less = split(less)
     var l = less.length
@@ -82,7 +74,6 @@
   api['concat'] = concat
   api['diff'] = diff
   api['parse'] = split // alias
-  api['slice'] = slice
   api['split'] = split
   api['union'] = union
   api['uniq'] = uniq
