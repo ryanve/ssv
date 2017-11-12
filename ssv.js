@@ -52,6 +52,10 @@
     return uniq(concat(ssv, more))
   }
 
+  function xor(left, right) {
+    return union(diff(left, right), diff(right, left))
+  }
+
   function uniq(ssv) {
     ssv = split(ssv)
     var u = []
@@ -90,5 +94,6 @@
   api["split"] = split
   api["union"] = union
   api["uniq"] = uniq
+  api["xor"] = xor
   return api
 });
