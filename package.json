@@ -34,24 +34,5 @@
   "homepage": "https://github.com/ryanve/ssv#readme",
   "devDependencies": {
     "eslint": "^4.11.0"
-  },
-  "jshintConfig": {
-    "asi": true,
-    "boss": true,
-    "browser": true,
-    "debug": true,
-    "devel": true,
-    "eqnull": true,
-    "evil": true,
-    "expr": true,
-    "globals": {},
-    "latedef": "nofunc",
-    "laxcomma": true,
-    "maxerr": 5,
-    "node": true,
-    "sub": true,
-    "supernew": true,
-    "undef": true,
-    "unused": "vars"
   }
 }
