@@ -34,6 +34,13 @@ ssv.union("matt mark", "matt") // "matt mark"
 ssv.split("mark tom travis") // ["mark", "tom", "travis"]
 ssv.split(" mark  tom  travis ") // ["mark", "tom", "travis"]
 ssv.uniq("travis travis tom travis tom") // "travis tom"
+ssv.xor("", "mark mark") // "mark"
+ssv.xor("mark tom", "mark") // "tom"
+ssv.xor("mark tom", "travis") // "mark tom travis"
+ssv.xor("mark tom", "travis tom") // "mark travis"
+ssv.xor(" mark tom ", " matt  tom ") // "mark matt"
+ssv.xor(" mark tom tom", "mark mark") // "tom"
+ssv.xor("mark mark", "tom tom") // "mark tom"
 ```
 
 ## API
@@ -68,4 +75,8 @@ ssv.uniq("travis travis tom travis tom") // "travis tom"
 
 ### `ssv.uniq(SSV)`
 - Get unique <var>SSV</var> string
+- `@return` string
+
+### `ssv.xor(SSV, SSV2)`
+- Get unique set of values found in either <var>SSV</var> or <var>SSV2</var> but not both
 - `@return` string
