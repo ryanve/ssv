@@ -53,7 +53,7 @@ ssv.uniq("travis travis tom travis tom") // "travis tom"
 
 ### `ssv.at(SSV, index)`
 - Get the value at the specified index
-- **@return** string
+- `@return` string
 
 ### `ssv.compact(SSV)`
 - Normalize <var>SSV</var> string to a trim compact string
