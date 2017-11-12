@@ -18,6 +18,11 @@ const ssv = require("ssv")
 ssv.any("mark tom travis", "matt") // false
 ssv.any("mark tom travis", "mark") // true
 ssv.any("mark tom travis", "mark scott") // true
+ssv.at("mark tom travis", 0) // "mark"
+ssv.at("mark tom travis", 1) // "tom"
+ssv.at("mark tom travis", -1) // "travis"
+ssv.at("mark tom travis", -2) // "tom"
+ssv.at("mark tom travis", 5) // ""
 ssv.compact("  mark   travis   matt ") // "mark travis matt"
 ssv.concat("mark tom", "travis matt") // "mark tom travis matt"
 ssv.concat(" mark  tom ", " travis  matt ") // "mark tom travis matt"
@@ -36,6 +41,10 @@ ssv.uniq("travis travis tom travis tom") // "travis tom"
 ### `ssv.any(SSV, SSV2)`
 - Test if <var>SSV</var> contains any <var>SSV2</var> values
 - **@return** boolean
+
+### `ssv.at(SSV, index)`
+- Get the value at the specified index
+- **@return** string
 
 ### `ssv.compact(SSV)`
 - Normalize <var>SSV</var> string to a trim compact string

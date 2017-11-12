@@ -69,7 +69,13 @@
     return r.join(space)
   }
 
+  function at(ssv, index) {
+    ssv = split(ssv)
+    return ssv[index < 0 ? +index + ssv.length : +index] || empty
+  }
+
   api["any"] = any
+  api["at"] = at
   api["compact"] = compact
   api["concat"] = concat
   api["diff"] = diff
