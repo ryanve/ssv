@@ -35,6 +35,9 @@ ssv.diff("mark tom tom", "mark matt") // "tom tom"
 ssv.diff("matt matt matt", "") // "matt matt matt"
 ssv.diff("mark mark", "tom tom") // "mark mark"
 ssv.diff("mark tom tom tom", "tom") // "mark"
+ssv.meet("", "mark") // ""
+ssv.meet("mark matt travis", "tom scott") // ""
+ssv.meet("mark tom tom", "mark tom travis") // "mark tom"
 ssv.union("mark tom ", "travis tom") // "mark tom travis"
 ssv.union("mark tom tom", "travis tom") // "mark tom travis"
 ssv.union("matt mark", "matt") // "matt mark"
@@ -68,6 +71,10 @@ ssv.xor("mark mark", "tom tom") // "mark tom"
 
 ### `ssv.diff(SSV, SSV2)`
 - Get the difference of 2 SSV strings (values in first not present in second)
+- `@return` string
+
+### `ssv.meet(SSV, SSV2)`
+- Get the intersection of 2 SSV strings (unique values present in both)
 - `@return` string
 
 ### `ssv.split(SSV)`
