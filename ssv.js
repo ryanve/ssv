@@ -1,11 +1,11 @@
 !function(root, name, make) {
-  typeof module != 'undefined' && module.exports ? module.exports = make() : root[name] = make()
-}(this, 'ssv', function() {
+  typeof module != "undefined" && module.exports ? module.exports = make() : root[name] = make()
+}(this, "ssv", function() {
 
   var api = {}
   var word = /\S+/g
-  var space = ' '
-  var empty = ''
+  var space = " "
+  var empty = ""
 
   function split(string) {
     return string.match(word) || []
@@ -69,12 +69,12 @@
     return r.join(space)
   }
 
-  api['any'] = any
-  api['compact'] = compact
-  api['concat'] = concat
-  api['diff'] = diff
-  api['split'] = split
-  api['union'] = union
-  api['uniq'] = uniq
+  api["any"] = any
+  api["compact"] = compact
+  api["concat"] = concat
+  api["diff"] = diff
+  api["split"] = split
+  api["union"] = union
+  api["uniq"] = uniq
   return api
 });
