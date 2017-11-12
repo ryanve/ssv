@@ -73,7 +73,6 @@
   api['compact'] = compact
   api['concat'] = concat
   api['diff'] = diff
-  api['parse'] = split // alias
   api['split'] = split
   api['union'] = union
   api['uniq'] = uniq

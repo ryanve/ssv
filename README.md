@@ -40,7 +40,7 @@ ssv.uniq('travis travis tom travis tom') // 'travis tom'
 - Normalize <var>SSV</var> string to a trim compact string
 
 ### `ssv.split(SSV)`
-- Get compact array of values. Alias: `ssv.parse`
+- Get compact array of values.
 
 ### `ssv.union(SSV, SSV2)`
 - Get the union of 2 SSV strings (unique values present in either)

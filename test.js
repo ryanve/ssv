@@ -3,7 +3,6 @@
     if (actual !== correct) throw new Error(actual + ' should be ' + correct)
   }
 
-  expect(api.split, api.parse)
   expect(api.split('').length, 0)
   expect(api.split(' ').length, 0)
   expect(api.split('mark').join('-'), 'mark')
