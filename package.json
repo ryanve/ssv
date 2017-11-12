@@ -17,6 +17,9 @@
     "ssv",
     "util",
     "utility",
+    "classes",
+    "classname",
+    "classnames",
     "functional",
     "javascript",
     "typescript",
@@ -24,7 +27,6 @@
     "string",
     "values",
     "spaces",
-    "parse",
     "space"
   ],
   "author": "Ryan Van Etten",
