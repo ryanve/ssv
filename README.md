@@ -10,22 +10,22 @@ npm install ssv
 ## Usage
 
 ```js
-const ssv = require('ssv')
+const ssv = require("ssv")
 
-ssv.any('mark tom travis', 'matt') // false
-ssv.any('mark tom travis', 'mark') // true
-ssv.any('mark tom travis', 'mark scott') // true
-ssv.concat('mark tom', 'travis matt') // 'mark tom travis matt'
-ssv.concat(' mark  tom ', ' travis  matt ') // 'mark tom travis matt'
-ssv.union('mark tom ', 'travis tom') // 'mark tom travis'
-ssv.union('mark tom tom', 'travis tom') // 'mark tom travis'
-ssv.union('matt mark', 'matt') // 'matt mark'
-ssv.diff('mark tom travis', 'tom') // 'mark travis'
-ssv.diff('mark tom tom', 'mark matt') // 'tom tom'
-ssv.compact('  mark   travis   matt ') // 'mark travis matt'
-ssv.split('mark tom travis') // ['mark', 'tom', 'travis']
-ssv.split(' mark  tom  travis ') // ['mark', 'tom', 'travis']
-ssv.uniq('travis travis tom travis tom') // 'travis tom'
+ssv.any("mark tom travis", "matt") // false
+ssv.any("mark tom travis", "mark") // true
+ssv.any("mark tom travis", "mark scott") // true
+ssv.concat("mark tom", "travis matt") // "mark tom travis matt"
+ssv.concat(" mark  tom ", " travis  matt ") // "mark tom travis matt"
+ssv.union("mark tom ", "travis tom") // "mark tom travis"
+ssv.union("mark tom tom", "travis tom") // "mark tom travis"
+ssv.union("matt mark", "matt") // "matt mark"
+ssv.diff("mark tom travis", "tom") // "mark travis"
+ssv.diff("mark tom tom", "mark matt") // "tom tom"
+ssv.compact("  mark   travis   matt ") // "mark travis matt"
+ssv.split("mark tom travis") // ["mark", "tom", "travis"]
+ssv.split(" mark  tom  travis ") // ["mark", "tom", "travis"]
+ssv.uniq("travis travis tom travis tom") // "travis tom"
 ```
 
 ## API
