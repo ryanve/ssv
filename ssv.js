@@ -31,6 +31,19 @@
     return false
   }
 
+  function all(ssv, search) {
+    search = split(search)
+    var l = search.length
+    if (!l) return true
+    ssv = split(ssv)
+    var n = ssv.length
+    ask:for (var i = 0; i < l; i++) {
+      for (var j = 0; j < n; j++) if (ssv[j] === search[i]) continue ask
+      return false
+    }
+    return true
+  }
+
   function concat(ssv, more) {
     return compact(ssv + space + more)
   }
@@ -69,6 +82,7 @@
     return r.join(space)
   }
 
+  api["all"] = all
   api["any"] = any
   api["compact"] = compact
   api["concat"] = concat
