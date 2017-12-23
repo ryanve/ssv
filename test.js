@@ -68,6 +68,13 @@ assert.strictEqual(api.union("mark mark mark", ""), "mark")
 assert.strictEqual(api.union("mark mark mark", "tom"), "mark tom")
 console.log("#union tests passed")
 
+assert.strictEqual(api.meet("", ""), "")
+assert.strictEqual(api.meet("", "mark"), "")
+assert.strictEqual(api.meet("mark matt travis", "tom scott"), "")
+assert.strictEqual(api.meet("mark tom tom", "mark tom travis"), "mark tom")
+assert.strictEqual(api.meet("tom tom tom scott", "tom travis scott"), "tom scott")
+console.log("#meet tests passed")
+
 assert.strictEqual(api.diff("", ""), "")
 assert.strictEqual(api.diff("", "mark"), "")
 assert.strictEqual(api.diff("mark tom", "travis"), "mark tom")

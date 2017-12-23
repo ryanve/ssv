@@ -56,6 +56,10 @@
     return union(diff(left, right), diff(right, left))
   }
 
+  function meet(left, right) {
+    return diff(union(left, right), xor(left, right))
+  }
+
   function uniq(ssv) {
     ssv = split(ssv)
     var u = []
@@ -91,6 +95,7 @@
   api["compact"] = compact
   api["concat"] = concat
   api["diff"] = diff
+  api["meet"] = meet
   api["split"] = split
   api["union"] = union
   api["uniq"] = uniq
