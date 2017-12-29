@@ -72,6 +72,10 @@ ssv.xor("mark mark", "tom tom") // "mark tom"
 - Concatenate 2 SSV strings
 - `@return` string
 
+### `ssv.count(SSV)`
+- Count the number of values
+- `@return` number
+
 ### `ssv.diff(SSV, SSV2)`
 - Get the difference of 2 SSV strings (values in first not present in second)
 - `@return` string
