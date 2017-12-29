@@ -11,6 +11,11 @@
     return string.match(word) || []
   }
 
+  function count(string) {
+    var found = string.match(word)
+    return found ? found.length : 0
+  }
+
   function compact(ssv) {
     return split(ssv).join(space)
   }
@@ -94,6 +99,7 @@
   api["any"] = any
   api["compact"] = compact
   api["concat"] = concat
+  api["count"] = count
   api["diff"] = diff
   api["meet"] = meet
   api["split"] = split

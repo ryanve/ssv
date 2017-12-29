@@ -23,6 +23,8 @@ ssv.any("mark tom travis", "matt") // false
 ssv.any("mark tom travis", "mark") // true
 ssv.any("mark tom travis", "mark scott") // true
 ssv.any("mark tom travis", "mark travis") // true
+ssv.count("  matt  mark  ") // 2
+ssv.count("matt matt matt") // 3
 ```
 
 ```js
@@ -69,6 +71,10 @@ ssv.xor("mark mark", "tom tom") // "mark tom"
 ### `ssv.concat(SSV, SSV2)`
 - Concatenate 2 SSV strings
 - `@return` string
+
+### `ssv.count(SSV)`
+- Count the number of values
+- `@return` number
 
 ### `ssv.diff(SSV, SSV2)`
 - Get the difference of 2 SSV strings (values in first not present in second)
