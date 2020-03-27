@@ -52,6 +52,18 @@ ssv.xor("mark tom", "travis tom") // "mark travis"
 ssv.xor(" mark tom ", " matt  tom ") // "mark matt"
 ssv.xor(" mark tom tom", "mark mark") // "tom"
 ssv.xor("mark mark", "tom tom") // "mark tom"
+
+ssv.state({
+  "mark travis": true,
+  "matt": true,
+  "tom scott": false
+}) // "mark travis matt"
+
+ssv.state({
+  "mark": true,
+  "mark travis": true,
+  "travis": false
+}) // "mark mark travis"
 ```
 
 ## API
@@ -87,6 +99,11 @@ ssv.xor("mark mark", "tom tom") // "mark tom"
 ### `ssv.split(SSV)`
 - Split <var>SSV</var> into compact array of values
 - `@return` array
+
+### `ssv.state(state={})`
+- Create compact SSV string from <var>state</var> object or string
+- Useful for conditional classnames
+- `@return` string
 
 ### `ssv.union(SSV, SSV2)`
 - Get the union of 2 SSV strings (unique values present in either)

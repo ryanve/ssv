@@ -3,6 +3,7 @@
 }(this, "ssv", function() {
 
   var api = {}
+  var own = {}.hasOwnProperty
   var word = /\S+/g
   var space = " "
   var empty = ""
@@ -95,6 +96,20 @@
     return r.join(space)
   }
 
+  function state(state) {
+    var s
+    if (typeof state == "string") s = state
+    else for (var key in state) {
+      if (own.call(state, key)) {
+        if (state[key]) {
+          if (s) s += space + key
+          else s = key
+        }
+      }
+    }
+    return s ? compact(s) : empty
+  }
+
   api["all"] = all
   api["any"] = any
   api["compact"] = compact
@@ -103,6 +118,7 @@
   api["diff"] = diff
   api["meet"] = meet
   api["split"] = split
+  api["state"] = state
   api["union"] = union
   api["uniq"] = uniq
   api["xor"] = xor
