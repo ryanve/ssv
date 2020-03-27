@@ -110,4 +110,29 @@ assert.strictEqual(api.xor("mark mark", "tom tom"), "mark tom")
 assert.strictEqual(api.xor("mark tom travis matt", "tom matt"), "mark travis")
 console.log("#xor tests passed")
 
+assert.strictEqual(api.state(""), "")
+assert.strictEqual(api.state(" "), "")
+assert.strictEqual(api.state({}), "")
+assert.strictEqual(api.state(api.state("mark")), "mark")
+assert.strictEqual(api.state(api.state(" tom ")), "tom")
+assert.strictEqual(api.state(api.state(" mark matt ")), "mark matt")
+assert.strictEqual(api.state(api.state("travis travis")), "travis travis")
+assert.strictEqual(api.state({
+  "mark travis": true,
+  "matt": true,
+  "tom scott": false
+}), "mark travis matt")
+assert.strictEqual(api.state({
+  " mark travis ": true,
+  " matt ": true,
+  " tom scott ": false,
+  " ": true,
+}), "mark travis matt")
+assert.strictEqual(api.state({
+  "mark": true,
+  "mark travis": true,
+  "travis": false
+}), "mark mark travis")
+console.log("#state tests passed")
+
 console.log("All tests passed =)")
