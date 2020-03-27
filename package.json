@@ -35,6 +35,7 @@
     "url": "https://github.com/ryanve/ssv/issues"
   },
   "homepage": "https://github.com/ryanve/ssv#readme",
+  "funding": "https://github.com/sponsors/ryanve",
   "devDependencies": {
     "eslint": "^4.11.0"
   }
