@@ -12,13 +12,12 @@
     return string.match(word) || []
   }
 
-  function count(string) {
-    var found = string.match(word)
-    return found ? found.length : 0
-  }
-
   function compact(ssv) {
     return split(ssv).join(space)
+  }
+
+  function count(string) {
+    return split(string).length
   }
 
   function any(ssv, search) {
