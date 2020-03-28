@@ -54,7 +54,7 @@
   }
 
   function union(ssv, more) {
-    return uniq(concat(ssv, more))
+    return uniq(ssv + space + more)
   }
 
   function xor(left, right) {
