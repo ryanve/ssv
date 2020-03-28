@@ -23,13 +23,13 @@ ssv.any("mark tom travis", "matt") // false
 ssv.any("mark tom travis", "mark") // true
 ssv.any("mark tom travis", "mark scott") // true
 ssv.any("mark tom travis", "mark travis") // true
+ssv.count("  matt  mark  ") // 2
+ssv.count("matt matt matt") // 3
 ssv.at("mark tom travis", 0) // "mark"
 ssv.at("mark tom travis", 1) // "tom"
 ssv.at("mark tom travis", -1) // "travis"
 ssv.at("mark tom travis", -2) // "tom"
 ssv.at("mark tom travis", 5) // ""
-ssv.count("  matt  mark  ") // 2
-ssv.count("matt matt matt") // 3
 ```
 
 ```js
