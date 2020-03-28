@@ -1,3 +1,4 @@
+
 # ssv
 Opensource JavaScript module for working with <b>space-separated values</b>
 
@@ -8,7 +9,6 @@ npm install ssv
 ```
 
 ## Usage
-
 
 ```js
 const ssv = require("ssv")
@@ -28,17 +28,47 @@ ssv.at("mark tom travis", 1) // "tom"
 ssv.at("mark tom travis", -1) // "travis"
 ssv.at("mark tom travis", -2) // "tom"
 ssv.at("mark tom travis", 5) // ""
+ssv.count("  matt  mark  ") // 2
+ssv.count("matt matt matt") // 3
+```
+
+```js
+ssv.split("mark tom travis") // ["mark", "tom", "travis"]
+ssv.split(" mark  tom  travis ") // ["mark", "tom", "travis"]
 ssv.compact("  mark   travis   matt ") // "mark travis matt"
-ssv.concat("mark tom", "travis matt") // "mark tom travis matt"
-ssv.concat(" mark  tom ", " travis  matt ") // "mark tom travis matt"
+ssv.concat("mark tom", "matt travis") // "mark tom matt travis"
+ssv.concat("mark tom", "tom  travis") // "mark tom tom travis"
 ssv.diff("mark tom travis", "tom") // "mark travis"
 ssv.diff("mark tom tom", "mark matt") // "tom tom"
+ssv.diff("matt matt matt", "") // "matt matt matt"
+ssv.diff("mark mark", "tom tom") // "mark mark"
+ssv.diff("mark tom tom tom", "tom") // "mark"
+ssv.meet("", "mark") // ""
+ssv.meet("mark matt travis", "tom scott") // ""
+ssv.meet("mark tom tom", "mark tom travis") // "mark tom"
 ssv.union("mark tom ", "travis tom") // "mark tom travis"
 ssv.union("mark tom tom", "travis tom") // "mark tom travis"
 ssv.union("matt mark", "matt") // "matt mark"
-ssv.split("mark tom travis") // ["mark", "tom", "travis"]
-ssv.split(" mark  tom  travis ") // ["mark", "tom", "travis"]
-ssv.uniq("travis travis tom travis tom") // "travis tom"
+ssv.uniq(" travis travis  tom  travis ") // "travis tom"
+ssv.xor("", "mark mark") // "mark"
+ssv.xor("mark tom", "mark") // "tom"
+ssv.xor("mark tom", "travis") // "mark tom travis"
+ssv.xor("mark tom", "travis tom") // "mark travis"
+ssv.xor(" mark tom ", " matt  tom ") // "mark matt"
+ssv.xor(" mark tom tom", "mark mark") // "tom"
+ssv.xor("mark mark", "tom tom") // "mark tom"
+
+ssv.state({
+  "mark travis": true,
+  "matt": true,
+  "tom scott": false
+}) // "mark travis matt"
+
+ssv.state({
+  "mark": true,
+  "mark travis": true,
+  "travis": false
+}) // "mark mark travis"
 ```
 
 ## API
@@ -63,13 +93,26 @@ ssv.uniq("travis travis tom travis tom") // "travis tom"
 - Concatenate 2 SSV strings
 - `@return` string
 
+### `ssv.count(SSV)`
+- Count the number of values
+- `@return` number
+
 ### `ssv.diff(SSV, SSV2)`
 - Get the difference of 2 SSV strings (values in first not present in second)
+- `@return` string
+
+### `ssv.meet(SSV, SSV2)`
+- Get the intersection of 2 SSV strings (unique values present in both)
 - `@return` string
 
 ### `ssv.split(SSV)`
 - Split <var>SSV</var> into compact array of values
 - `@return` array
+
+### `ssv.state(state={})`
+- Create compact SSV string from <var>state</var> object or string
+- Useful for conditional classnames
+- `@return` string
 
 ### `ssv.union(SSV, SSV2)`
 - Get the union of 2 SSV strings (unique values present in either)
@@ -77,4 +120,8 @@ ssv.uniq("travis travis tom travis tom") // "travis tom"
 
 ### `ssv.uniq(SSV)`
 - Get unique <var>SSV</var> string
+- `@return` string
+
+### `ssv.xor(SSV, SSV2)`
+- Get unique set of values found in either <var>SSV</var> or <var>SSV2</var> but not both
 - `@return` string

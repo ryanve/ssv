@@ -3,6 +3,7 @@
 }(this, "ssv", function() {
 
   var api = {}
+  var own = {}.hasOwnProperty
   var word = /\S+/g
   var space = " "
   var empty = ""
@@ -13,6 +14,10 @@
 
   function compact(ssv) {
     return split(ssv).join(space)
+  }
+
+  function count(string) {
+    return split(string).length
   }
 
   function any(ssv, search) {
@@ -43,6 +48,11 @@
     }
     return true
   }
+  
+  function at(ssv, index) {
+    ssv = split(ssv)
+    return ssv[index < 0 ? +index + ssv.length : +index] || empty
+  }
 
   function concat(ssv, more) {
     return compact(ssv + space + more)
@@ -50,6 +60,14 @@
 
   function union(ssv, more) {
     return uniq(concat(ssv, more))
+  }
+
+  function xor(left, right) {
+    return union(diff(left, right), diff(right, left))
+  }
+
+  function meet(left, right) {
+    return diff(union(left, right), xor(left, right))
   }
 
   function uniq(ssv) {
@@ -81,10 +99,19 @@
     }
     return r.join(space)
   }
-
-  function at(ssv, index) {
-    ssv = split(ssv)
-    return ssv[index < 0 ? +index + ssv.length : +index] || empty
+  
+  function state(state) {
+    var s
+    if (typeof state == "string") s = state
+    else for (var key in state) {
+      if (own.call(state, key)) {
+        if (state[key]) {
+          if (s) s += space + key
+          else s = key
+        }
+      }
+    }
+    return s ? compact(s) : empty
   }
 
   api["all"] = all
@@ -92,9 +119,13 @@
   api["at"] = at
   api["compact"] = compact
   api["concat"] = concat
+  api["count"] = count
   api["diff"] = diff
+  api["meet"] = meet
   api["split"] = split
+  api["state"] = state
   api["union"] = union
   api["uniq"] = uniq
+  api["xor"] = xor
   return api
 });

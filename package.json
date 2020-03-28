@@ -1,6 +1,6 @@
 {
   "name": "ssv",
-  "version": "3.0.0",
+  "version": "3.4.0",
   "description": "space separated values module",
   "main": "ssv.js",
   "types": "ssv.d.ts",
@@ -17,6 +17,9 @@
     "ssv",
     "util",
     "utility",
+    "classes",
+    "classname",
+    "classnames",
     "functional",
     "javascript",
     "typescript",
@@ -24,7 +27,6 @@
     "string",
     "values",
     "spaces",
-    "parse",
     "space"
   ],
   "author": "Ryan Van Etten",
@@ -33,6 +35,7 @@
     "url": "https://github.com/ryanve/ssv/issues"
   },
   "homepage": "https://github.com/ryanve/ssv#readme",
+  "funding": "https://github.com/sponsors/ryanve",
   "devDependencies": {
     "eslint": "^4.11.0"
   }

@@ -14,6 +14,14 @@ assert.strictEqual(api.compact("  mark  tom  travis  "), "mark tom travis")
 assert.strictEqual(api.compact("\n mark \r tom \t travis \n\r\t"), "mark tom travis")
 console.log("#compact tests passed")
 
+assert.strictEqual(api.count(""), 0)
+assert.strictEqual(api.count("    "), 0)
+assert.strictEqual(api.count("blink"), 1)
+assert.strictEqual(api.count("mark-hoppus matt-skiba"), 2)
+assert.strictEqual(api.count("  mark  matt  travis  "), 3)
+assert.strictEqual(api.count(" blink blink blink 182"), 4)
+console.log("#count tests passed")
+
 assert.strictEqual(api.all("", ""), true)
 assert.strictEqual(api.all("", " "), true)
 assert.strictEqual(api.all(" ", " "), true)
@@ -68,6 +76,13 @@ assert.strictEqual(api.union("mark mark mark", ""), "mark")
 assert.strictEqual(api.union("mark mark mark", "tom"), "mark tom")
 console.log("#union tests passed")
 
+assert.strictEqual(api.meet("", ""), "")
+assert.strictEqual(api.meet("", "mark"), "")
+assert.strictEqual(api.meet("mark matt travis", "tom scott"), "")
+assert.strictEqual(api.meet("mark tom tom", "mark tom travis"), "mark tom")
+assert.strictEqual(api.meet("tom tom tom scott", "tom travis scott"), "tom scott")
+console.log("#meet tests passed")
+
 assert.strictEqual(api.diff("", ""), "")
 assert.strictEqual(api.diff("", "mark"), "")
 assert.strictEqual(api.diff("mark tom", "travis"), "mark tom")
@@ -78,6 +93,9 @@ assert.strictEqual(api.diff("  mark tom tom", "mark mark"), "tom tom")
 assert.strictEqual(api.diff("mark mark mark", ""), "mark mark mark")
 assert.strictEqual(api.diff("mark mark", "tom tom"), "mark mark")
 assert.strictEqual(api.diff("mark tom travis matt", "tom matt"), "mark travis")
+assert.strictEqual(api.diff("mark tom tom tom", "tom"), "mark")
+assert.strictEqual(api.diff("mark tom tom tom", "tom travis"), "mark")
+assert.strictEqual(api.diff("mark tom tom tom", "tom travis tom"), "mark")
 console.log("#diff tests passed")
 
 assert.strictEqual(api.at(""), "")
@@ -91,5 +109,42 @@ assert.strictEqual(api.at("mark tom scott", 1), "tom")
 assert.strictEqual(api.at("mark tom scott", 8), "")
 assert.strictEqual(api.at("mark tom scott", -8), "")
 console.log("#at tests passed")
+
+assert.strictEqual(api.xor("", ""), "")
+assert.strictEqual(api.xor("", "mark"), "mark")
+assert.strictEqual(api.xor("mark tom", "mark"), "tom")
+assert.strictEqual(api.xor("mark tom", "travis"), "mark tom travis")
+assert.strictEqual(api.xor("mark tom", "travis tom"), "mark travis")
+assert.strictEqual(api.xor("  mark tom  ", " matt  tom "), "mark matt")
+assert.strictEqual(api.xor("  mark tom tom", "mark mark"), "tom")
+assert.strictEqual(api.xor("mark mark mark", ""), "mark")
+assert.strictEqual(api.xor("mark mark", "tom tom"), "mark tom")
+assert.strictEqual(api.xor("mark tom travis matt", "tom matt"), "mark travis")
+console.log("#xor tests passed")
+
+assert.strictEqual(api.state(""), "")
+assert.strictEqual(api.state(" "), "")
+assert.strictEqual(api.state({}), "")
+assert.strictEqual(api.state(api.state("mark")), "mark")
+assert.strictEqual(api.state(api.state(" tom ")), "tom")
+assert.strictEqual(api.state(api.state(" mark matt ")), "mark matt")
+assert.strictEqual(api.state(api.state("travis travis")), "travis travis")
+assert.strictEqual(api.state({
+  "mark travis": true,
+  "matt": true,
+  "tom scott": false
+}), "mark travis matt")
+assert.strictEqual(api.state({
+  " mark travis ": true,
+  " matt ": true,
+  " tom scott ": false,
+  " ": true,
+}), "mark travis matt")
+assert.strictEqual(api.state({
+  "mark": true,
+  "mark travis": true,
+  "travis": false
+}), "mark mark travis")
+console.log("#state tests passed")
 
 console.log("All tests passed =)")
