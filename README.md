@@ -23,6 +23,9 @@ ssv.any("mark tom travis", "matt") // false
 ssv.any("mark tom travis", "mark") // true
 ssv.any("mark tom travis", "mark scott") // true
 ssv.any("mark tom travis", "mark travis") // true
+ssv.blank("travis") // false
+ssv.blank("      ") // true
+ssv.blank("") // true
 ssv.count("  matt  mark  ") // 2
 ssv.count("matt matt matt") // 3
 ```
@@ -74,6 +77,11 @@ ssv.state({
 
 ### `ssv.any(SSV, SSV2)`
 - Test if <var>SSV</var> contains **any** <var>SSV2</var> values
+- `@return` boolean
+
+### `ssv.blank(SSV)`
+- Test if <var>SSV</var> has no values
+- `true` for empty string or whitespace
 - `@return` boolean
 
 ### `ssv.compact(SSV)`
