@@ -48,7 +48,7 @@
     }
     return true
   }
-  
+
   function at(ssv, index) {
     ssv = split(ssv)
     return ssv[index < 0 ? +index + ssv.length : +index] || empty
@@ -99,7 +99,7 @@
     }
     return r.join(space)
   }
-  
+
   function state(state) {
     var s
     if (typeof state == "string") s = state
