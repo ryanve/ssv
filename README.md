@@ -23,6 +23,9 @@ ssv.any("mark tom travis", "matt") // false
 ssv.any("mark tom travis", "mark") // true
 ssv.any("mark tom travis", "mark scott") // true
 ssv.any("mark tom travis", "mark travis") // true
+ssv.blank("travis") // false
+ssv.blank("      ") // true
+ssv.blank("") // true
 ssv.count("  matt  mark  ") // 2
 ssv.count("matt matt matt") // 3
 ssv.at("mark tom travis", 0) // "mark"
@@ -85,6 +88,11 @@ ssv.state({
 - Get the value at the specified <var>index</var>
 - Support positive or negative <var>index</var>
 - `@return` string
+
+### `ssv.blank(SSV)`
+- Test if <var>SSV</var> has no values
+- `true` for empty string or whitespace
+- `@return` boolean
 
 ### `ssv.compact(SSV)`
 - Normalize <var>SSV</var> string to a trim compact string

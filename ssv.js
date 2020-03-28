@@ -20,6 +20,10 @@
     return split(string).length
   }
 
+  function blank(string) {
+    return !string.match(word)
+  }
+
   function any(ssv, search) {
     search = split(search)
     var l = search.length
@@ -62,7 +66,7 @@
   }
 
   function union(ssv, more) {
-    return uniq(concat(ssv, more))
+    return uniq(ssv + space + more)
   }
 
   function xor(left, right) {
@@ -120,6 +124,7 @@
   api["all"] = all
   api["any"] = any
   api["at"] = at
+  api["blank"] = blank
   api["compact"] = compact
   api["concat"] = concat
   api["count"] = count
