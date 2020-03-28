@@ -20,6 +20,10 @@
     return split(string).length
   }
 
+  function blank(string) {
+    return !string.match(word)
+  }
+
   function any(ssv, search) {
     search = split(search)
     var l = search.length
@@ -111,6 +115,7 @@
 
   api["all"] = all
   api["any"] = any
+  api["blank"] = blank
   api["compact"] = compact
   api["concat"] = concat
   api["count"] = count

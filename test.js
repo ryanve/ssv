@@ -50,6 +50,11 @@ assert.strictEqual(api.any("  mark   tom ", "matt travis"), false)
 assert.strictEqual(api.any("  mark   tom  mark", "travis tom"), true)
 console.log("#any tests passed")
 
+assert.strictEqual(api.blank("travis"), false)
+assert.strictEqual(api.blank("      "), true)
+assert.strictEqual(api.blank(""), true)
+console.log("#blank tests passed")
+
 assert.strictEqual(api.concat("", ""), "")
 assert.strictEqual(api.concat("", "mark"), "mark")
 assert.strictEqual(api.concat("mark tom", "travis"), "mark tom travis")
