@@ -82,7 +82,8 @@ ssv.state({
 - `@return` boolean
 
 ### `ssv.at(SSV, index)`
-- Get the value at the specified index
+- Get the value at the specified <var>index</var>
+- Support positive or negative <var>index</var>
 - `@return` string
 
 ### `ssv.compact(SSV)`
