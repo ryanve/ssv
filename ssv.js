@@ -49,9 +49,12 @@
     return true
   }
 
-  function at(ssv, index) {
+  function at(ssv, i) {
+    i = +i
+    if (i !== i || i === i/0) return empty
     ssv = split(ssv)
-    return ssv[index < 0 ? +index + ssv.length : +index] || empty
+    if (i < 0) i += ssv.length
+    return ssv[i] || empty
   }
 
   function concat(ssv, more) {
