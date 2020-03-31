@@ -57,6 +57,18 @@
     return compact(ssv + space + more)
   }
 
+  function complete(ssv, more) {
+    ssv = split(ssv)
+    more = split(more)
+    mas:for (var i = 0, l = more.length; i < l; i++) {
+      for (var j = ssv.length; j--;)
+        if (ssv[j] === more[i])
+          continue mas
+      ssv.push(more[i])
+    }
+    return ssv.join(space)
+  }
+
   function union(ssv, more) {
     return uniq(ssv + space + more)
   }
@@ -117,6 +129,7 @@
   api["any"] = any
   api["blank"] = blank
   api["compact"] = compact
+  api["complete"] = complete
   api["concat"] = concat
   api["count"] = count
   api["diff"] = diff
