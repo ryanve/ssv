@@ -83,11 +83,12 @@
 
   function uniq(ssv) {
     ssv = split(ssv)
+    var n = 0
     var u = []
     var l = ssv.length
     outer:for (var i = 0; i < l; i++) {
-      for (var j = u.length; j--;) if (ssv[i] === u[j]) continue outer
-      u.push(ssv[i])
+      for (var j = n; j--;) if (ssv[i] === u[j]) continue outer
+      u[n++] = ssv[i]
     }
     return u.join(space)
   }
