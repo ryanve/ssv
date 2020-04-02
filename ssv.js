@@ -58,15 +58,7 @@
   }
 
   function complete(ssv, more) {
-    ssv = split(ssv)
-    more = split(more)
-    mas:for (var i = 0, l = more.length; i < l; i++) {
-      for (var j = ssv.length; j--;)
-        if (ssv[j] === more[i])
-          continue mas
-      ssv.push(more[i])
-    }
-    return ssv.join(space)
+    return compact(ssv + space + diff(uniq(more), ssv))
   }
 
   function union(ssv, more) {
