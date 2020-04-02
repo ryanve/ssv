@@ -49,7 +49,7 @@ ssv.union("mark tom tom", "travis tom") // "mark tom travis"
 ssv.union("matt mark", "matt") // "matt mark"
 ssv.complete("mark tom", "travis") // "mark tom travis"
 ssv.complete("mark tom travis", "travis") // "mark tom travis"
-ssv.complete("mark tom", "travis travis") // "mark tom travis"
+ssv.complete("tom tom", "tom mark mark") // "tom tom mark mark"
 ssv.uniq(" travis travis  tom  travis ") // "travis tom"
 ssv.xor("", "mark mark") // "mark"
 ssv.xor("mark tom", "mark") // "tom"
@@ -96,7 +96,7 @@ ssv.state({
 - `@return` string
 
 ### `ssv.complete(SSV, SSV2)`
-- Complement <var>SSV</var> with unique new values from <var>SSV2</var>
+- Complement <var>SSV</var> with new values from <var>SSV2</var>
 - `@return` string
 
 ### `ssv.count(SSV)`

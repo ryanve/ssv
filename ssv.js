@@ -48,7 +48,7 @@
   }
 
   function complete(ssv, more) {
-    return compact(ssv + space + diff(uniq(more), ssv))
+    return compact(ssv + space + diff(more, ssv))
   }
 
   function union(ssv, more) {
