@@ -47,6 +47,9 @@ ssv.meet("mark tom tom", "mark tom travis") // "mark tom"
 ssv.union("mark tom ", "travis tom") // "mark tom travis"
 ssv.union("mark tom tom", "travis tom") // "mark tom travis"
 ssv.union("matt mark", "matt") // "matt mark"
+ssv.complete("mark tom", "travis") // "mark tom travis"
+ssv.complete("mark tom travis", "travis") // "mark tom travis"
+ssv.complete("mark tom", "travis travis") // "mark tom travis"
 ssv.uniq(" travis travis  tom  travis ") // "travis tom"
 ssv.xor("", "mark mark") // "mark"
 ssv.xor("mark tom", "mark") // "tom"
@@ -90,6 +93,10 @@ ssv.state({
 
 ### `ssv.concat(SSV, SSV2)`
 - Concatenate 2 SSV strings
+- `@return` string
+
+### `ssv.complete(SSV, SSV2)`
+- Complement <var>SSV</var> with unique new values from <var>SSV2</var>
 - `@return` string
 
 ### `ssv.count(SSV)`
