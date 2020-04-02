@@ -40,7 +40,7 @@
   }
 
   function all(ssv, search) {
-    return !diff(search, ssv)
+    return blank(search) || !diff(search, ssv)
   }
 
   function concat(ssv, more) {
