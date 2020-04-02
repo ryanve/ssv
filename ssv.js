@@ -82,22 +82,19 @@
   }
 
   function diff(ssv, less) {
-    less = split(less)
-    var l = less.length
-    if (!l) return compact(ssv)
+    var d = empty
     ssv = split(ssv)
+    less = split(less)
     var n = ssv.length
-    if (!n) return empty
-    var r = []
-    var i = 0
-    var skip = {}
-    while (i < l) skip[less[i++]] = less
-    for (i = 0; i < n; i++) {
-      if (skip[ssv[i]] !== less) {
-        r.push(ssv[i])
-      }
+    var l = less.length
+    var j = 0
+    outer:while (j < n) {
+      var i = l
+      var v = ssv[j++]
+      while (i--) if (v === less[i]) continue outer
+      d ? d += space + v : d = v
     }
-    return r.join(space)
+    return d
   }
 
   function state(state) {
