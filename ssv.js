@@ -47,7 +47,7 @@
     return compact(ssv + space + more)
   }
 
-  function complete(ssv, more) {
+  function need(ssv, more) {
     return compact(ssv + space + diff(more, ssv))
   }
 
@@ -109,7 +109,7 @@
   api["any"] = any
   api["blank"] = blank
   api["compact"] = compact
-  api["complete"] = complete
+  api["need"] = need
   api["concat"] = concat
   api["count"] = count
   api["diff"] = diff

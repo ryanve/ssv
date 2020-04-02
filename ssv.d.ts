@@ -3,7 +3,7 @@ declare module ssv {
   export function any(ssv: string, search: string): boolean;
   export function blank(ssv: string): boolean;
   export function compact(ssv: string): string;
-  export function complete(ssv: string, more: string): string;
+  export function need(ssv: string, more: string): string;
   export function concat(ssv: string, more: string): string;
   export function count(ssv: string): number;
   export function diff(ssv: string, less: string): string;
