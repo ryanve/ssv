@@ -88,7 +88,7 @@ ssv.state({
 - `@return` boolean
 
 ### `ssv.compact(SSV)`
-- Normalize <var>SSV</var> string to a trim compact string
+- Remove excess whitespace from <var>SSV</var>
 - `@return` string
 
 ### `ssv.concat(SSV, SSV2)`
