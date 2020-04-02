@@ -30,12 +30,11 @@
     if (!l) return false
     ssv = split(ssv)
     var n = ssv.length
-    for (var j = 0; j < n; j++) {
-      for (var i = 0; i < l; i++) {
-        if (ssv[j] === search[i]) {
-          return true
-        }
-      }
+    var j = 0
+    while (j < n) {
+      var i = l
+      var v = ssv[j++]
+      while (i--) if (v === search[i]) return true
     }
     return false
   }
