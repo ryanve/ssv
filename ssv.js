@@ -41,16 +41,7 @@
   }
 
   function all(ssv, search) {
-    search = split(search)
-    var l = search.length
-    if (!l) return true
-    ssv = split(ssv)
-    var n = ssv.length
-    ask:for (var i = 0; i < l; i++) {
-      for (var j = 0; j < n; j++) if (ssv[j] === search[i]) continue ask
-      return false
-    }
-    return true
+    return !diff(search, ssv)
   }
 
   function concat(ssv, more) {
