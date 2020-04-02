@@ -47,6 +47,10 @@
     return compact(ssv + space + more)
   }
 
+  function complete(ssv, more) {
+    return compact(ssv + space + diff(uniq(more), ssv))
+  }
+
   function union(ssv, more) {
     return uniq(ssv + space + more)
   }
@@ -105,6 +109,7 @@
   api["any"] = any
   api["blank"] = blank
   api["compact"] = compact
+  api["complete"] = complete
   api["concat"] = concat
   api["count"] = count
   api["diff"] = diff
