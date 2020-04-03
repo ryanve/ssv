@@ -30,27 +30,17 @@
     if (!l) return false
     ssv = split(ssv)
     var n = ssv.length
-    for (var j = 0; j < n; j++) {
-      for (var i = 0; i < l; i++) {
-        if (ssv[j] === search[i]) {
-          return true
-        }
-      }
+    var j = 0
+    while (j < n) {
+      var i = l
+      var v = ssv[j++]
+      while (i--) if (v === search[i]) return true
     }
     return false
   }
 
   function all(ssv, search) {
-    search = split(search)
-    var l = search.length
-    if (!l) return true
-    ssv = split(ssv)
-    var n = ssv.length
-    ask:for (var i = 0; i < l; i++) {
-      for (var j = 0; j < n; j++) if (ssv[j] === search[i]) continue ask
-      return false
-    }
-    return true
+    return blank(search) || !diff(search, ssv)
   }
 
   function at(ssv, i) {
@@ -63,6 +53,10 @@
 
   function concat(ssv, more) {
     return compact(ssv + space + more)
+  }
+
+  function need(ssv, more) {
+    return compact(ssv + space + diff(more, ssv))
   }
 
   function union(ssv, more) {
@@ -79,32 +73,30 @@
 
   function uniq(ssv) {
     ssv = split(ssv)
+    var n = 0
     var u = []
     var l = ssv.length
     outer:for (var i = 0; i < l; i++) {
-      for (var j = u.length; j--;) if (ssv[i] === u[j]) continue outer
-      u.push(ssv[i])
+      for (var j = n; j--;) if (ssv[i] === u[j]) continue outer
+      u[n++] = ssv[i]
     }
     return u.join(space)
   }
 
   function diff(ssv, less) {
-    less = split(less)
-    var l = less.length
-    if (!l) return compact(ssv)
+    var d = empty
     ssv = split(ssv)
+    less = split(less)
     var n = ssv.length
-    if (!n) return empty
-    var r = []
-    var i = 0
-    var skip = {}
-    while (i < l) skip[less[i++]] = less
-    for (i = 0; i < n; i++) {
-      if (skip[ssv[i]] !== less) {
-        r.push(ssv[i])
-      }
+    var l = less.length
+    var j = 0
+    outer:while (j < n) {
+      var i = l
+      var v = ssv[j++]
+      while (i--) if (v === less[i]) continue outer
+      d ? d += space + v : d = v
     }
-    return r.join(space)
+    return d
   }
 
   function state(state) {
@@ -126,6 +118,7 @@
   api["at"] = at
   api["blank"] = blank
   api["compact"] = compact
+  api["need"] = need
   api["concat"] = concat
   api["count"] = count
   api["diff"] = diff
