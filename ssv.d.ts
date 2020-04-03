@@ -13,7 +13,7 @@ declare module ssv {
   export function state(state: object | string): string;
   export function union(ssv: string, more: string): string;
   export function uniq(ssv: string): string;
-  export function diff(left: string, right: string): string;
+  export function xor(left: string, right: string): string;
 }
 
 declare module "ssv" {
