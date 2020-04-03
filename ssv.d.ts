@@ -1,6 +1,7 @@
 declare module ssv {
   export function all(ssv: string, search: string): boolean;
   export function any(ssv: string, search: string): boolean;
+  export function at(ssv: string, index: number): string;
   export function blank(ssv: string): boolean;
   export function compact(ssv: string): string;
   export function need(ssv: string, more: string): string;

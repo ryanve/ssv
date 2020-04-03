@@ -1,11 +1,10 @@
-
 # ssv
 Opensource JavaScript module for working with <b>space-separated values</b>
 
 ## Setup
 
 ```
-npm install ssv
+npm install ssv --save
 ```
 
 ## Usage
@@ -28,6 +27,11 @@ ssv.blank("      ") // true
 ssv.blank("") // true
 ssv.count("  matt  mark  ") // 2
 ssv.count("matt matt matt") // 3
+ssv.at("mark tom travis", 0) // "mark"
+ssv.at("mark tom travis", 1) // "tom"
+ssv.at("mark tom travis", -1) // "travis"
+ssv.at("mark tom travis", -2) // "tom"
+ssv.at("mark tom travis", 5) // ""
 ```
 
 ```js
@@ -58,7 +62,9 @@ ssv.xor("mark tom", "travis tom") // "mark travis"
 ssv.xor(" mark tom ", " matt  tom ") // "mark matt"
 ssv.xor(" mark tom tom", "mark mark") // "tom"
 ssv.xor("mark mark", "tom tom") // "mark tom"
+```
 
+```js
 ssv.state({
   "mark travis": true,
   "matt": true,
@@ -82,6 +88,11 @@ ssv.state({
 - Test if <var>SSV</var> contains **any** <var>SSV2</var> values
 - `@return` boolean
 
+### `ssv.at(SSV, index)`
+- Get the value at the specified <var>index</var>
+- Supports positive or negative <var>index</var>
+- `@return` string
+
 ### `ssv.blank(SSV)`
 - Test if <var>SSV</var> has no values
 - `true` for empty string or whitespace
@@ -95,12 +106,8 @@ ssv.state({
 - Concatenate 2 SSV strings
 - `@return` string
 
-### `ssv.need(SSV, SSV2)`
-- Complement <var>SSV</var> with needed values from <var>SSV2</var>
-- `@return` string
-
 ### `ssv.count(SSV)`
-- Count the number of values
+- Count the number of values in <var>SSV</var>
 - `@return` number
 
 ### `ssv.diff(SSV, SSV2)`
@@ -111,23 +118,27 @@ ssv.state({
 - Get the intersection of 2 SSV strings (unique values present in both)
 - `@return` string
 
+### `ssv.need(SSV, SSV2)`
+- Complement <var>SSV</var> with needed values from <var>SSV2</var>
+- `@return` string
+
 ### `ssv.split(SSV)`
 - Split <var>SSV</var> into compact array of values
 - `@return` array
 
 ### `ssv.state(state={})`
-- Create compact SSV string from <var>state</var> object or string
+- Get SSV string from <var>state</var> object or string
 - Useful for conditional classnames
 - `@return` string
 
 ### `ssv.union(SSV, SSV2)`
-- Get the union of 2 SSV strings (unique values present in either)
+- Get the union of 2 SSV strings (unique values found in either)
 - `@return` string
 
 ### `ssv.uniq(SSV)`
-- Get unique <var>SSV</var> string
+- Get unique values found in <var>SSV</var>
 - `@return` string
 
 ### `ssv.xor(SSV, SSV2)`
-- Get unique set of values found in either <var>SSV</var> or <var>SSV2</var> but not both
+- Get unique values found in either <var>SSV</var> or <var>SSV2</var> but not both
 - `@return` string
