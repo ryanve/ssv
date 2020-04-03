@@ -9,12 +9,23 @@
     "pretest": "eslint .",
     "test": "node test"
   },
+  "author": "Ryan Van Etten",
+  "license": "CC0-1.0",
+  "homepage": "https://github.com/ryanve/ssv",
+  "funding": "https://github.com/sponsors/ryanve",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ryanve/ssv.git"
   },
+  "bugs": {
+    "url": "https://github.com/ryanve/ssv/issues"
+  },
+  "devDependencies": {
+    "eslint": "^4.11.0"
+  },
   "keywords": [
     "ssv",
+    "data",
     "util",
     "utility",
     "classes",
@@ -23,20 +34,11 @@
     "functional",
     "javascript",
     "typescript",
+    "set theory",
     "strings",
     "string",
     "values",
     "spaces",
     "space"
-  ],
-  "author": "Ryan Van Etten",
-  "license": "CC0-1.0",
-  "bugs": {
-    "url": "https://github.com/ryanve/ssv/issues"
-  },
-  "homepage": "https://github.com/ryanve/ssv#readme",
-  "funding": "https://github.com/sponsors/ryanve",
-  "devDependencies": {
-    "eslint": "^4.11.0"
-  }
+  ]
 }
