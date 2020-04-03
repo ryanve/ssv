@@ -1,3 +1,4 @@
+/** @preserve npm.im/ssv */
 !function(root, name, make) {
   typeof module != "undefined" && module.exports ? module.exports = make() : root[name] = make()
 }(this, "ssv", function() {
