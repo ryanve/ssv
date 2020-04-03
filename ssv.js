@@ -3,7 +3,7 @@
   typeof module != "undefined" && module.exports ? module.exports = make() : root[name] = make()
 }(this, "ssv", function() {
 
-  var api = {}
+  var ssv = {}
   var own = {}.hasOwnProperty
   var word = /\S+/g
   var space = " "
@@ -114,20 +114,20 @@
     return s ? compact(s) : empty
   }
 
-  api["all"] = all
-  api["any"] = any
-  api["at"] = at
-  api["blank"] = blank
-  api["compact"] = compact
-  api["need"] = need
-  api["concat"] = concat
-  api["count"] = count
-  api["diff"] = diff
-  api["meet"] = meet
-  api["split"] = split
-  api["state"] = state
-  api["union"] = union
-  api["uniq"] = uniq
-  api["xor"] = xor
-  return api
+  ssv["all"] = all
+  ssv["any"] = any
+  ssv["at"] = at
+  ssv["blank"] = blank
+  ssv["compact"] = compact
+  ssv["need"] = need
+  ssv["concat"] = concat
+  ssv["count"] = count
+  ssv["diff"] = diff
+  ssv["meet"] = meet
+  ssv["split"] = split
+  ssv["state"] = state
+  ssv["union"] = union
+  ssv["uniq"] = uniq
+  ssv["xor"] = xor
+  return ssv
 });
