@@ -9,59 +9,59 @@
   var space = " "
   var empty = ""
 
-  function split(string) {
-    return string.match(word) || []
+  function split(set) {
+    return set.match(word) || []
   }
 
-  function compact(ssv) {
-    return split(ssv).join(space)
+  function compact(set) {
+    return split(set).join(space)
   }
 
-  function count(string) {
-    return split(string).length
+  function count(set) {
+    return split(set).length
   }
 
-  function blank(string) {
-    return !string.match(word)
+  function blank(set) {
+    return !set.match(word)
   }
 
-  function any(ssv, search) {
+  function any(set, search) {
     search = split(search)
     var l = search.length
     if (!l) return false
-    ssv = split(ssv)
-    var n = ssv.length
+    set = split(set)
+    var n = set.length
     var j = 0
     while (j < n) {
       var i = l
-      var v = ssv[j++]
+      var v = set[j++]
       while (i--) if (v === search[i]) return true
     }
     return false
   }
 
-  function all(ssv, search) {
-    return blank(search) || !diff(search, ssv)
+  function all(set, search) {
+    return blank(search) || !diff(search, set)
   }
 
-  function at(ssv, i) {
+  function at(set, i) {
     i = +i
     if (i !== i || i === i/0) return empty
-    ssv = split(ssv)
-    if (i < 0) i += ssv.length
-    return ssv[i] || empty
+    set = split(set)
+    if (i < 0) i += set.length
+    return set[i] || empty
   }
 
-  function concat(ssv, more) {
-    return compact(ssv + space + more)
+  function concat(set, more) {
+    return compact(set + space + more)
   }
 
-  function need(ssv, more) {
-    return compact(ssv + space + diff(more, ssv))
+  function need(set, more) {
+    return compact(set + space + diff(more, set))
   }
 
-  function union(ssv, more) {
-    return uniq(ssv + space + more)
+  function union(set, more) {
+    return uniq(set + space + more)
   }
 
   function xor(left, right) {
@@ -72,28 +72,28 @@
     return diff(union(left, right), xor(left, right))
   }
 
-  function uniq(ssv) {
-    ssv = split(ssv)
+  function uniq(set) {
+    set = split(set)
     var n = 0
     var u = []
-    var l = ssv.length
+    var l = set.length
     outer:for (var i = 0; i < l; i++) {
-      for (var j = n; j--;) if (ssv[i] === u[j]) continue outer
-      u[n++] = ssv[i]
+      for (var j = n; j--;) if (set[i] === u[j]) continue outer
+      u[n++] = set[i]
     }
     return u.join(space)
   }
 
-  function diff(ssv, less) {
+  function diff(set, less) {
     var d = empty
-    ssv = split(ssv)
+    set = split(set)
     less = split(less)
-    var n = ssv.length
+    var n = set.length
     var l = less.length
     var j = 0
     outer:while (j < n) {
       var i = l
-      var v = ssv[j++]
+      var v = set[j++]
       while (i--) if (v === less[i]) continue outer
       d ? d += space + v : d = v
     }
