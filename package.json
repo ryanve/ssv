@@ -10,7 +10,7 @@
     "test": "node test"
   },
   "author": "Ryan Van Etten",
-  "license": "CC0-1.0",
+  "license": "0BSD",
   "homepage": "https://github.com/ryanve/ssv",
   "funding": "https://github.com/sponsors/ryanve",
   "repository": {
