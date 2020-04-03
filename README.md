@@ -28,6 +28,11 @@ ssv.blank("      ") // true
 ssv.blank("") // true
 ssv.count("  matt  mark  ") // 2
 ssv.count("matt matt matt") // 3
+ssv.at("mark tom travis", 0) // "mark"
+ssv.at("mark tom travis", 1) // "tom"
+ssv.at("mark tom travis", -1) // "travis"
+ssv.at("mark tom travis", -2) // "tom"
+ssv.at("mark tom travis", 5) // ""
 ```
 
 ```js
@@ -81,6 +86,11 @@ ssv.state({
 ### `ssv.any(SSV, SSV2)`
 - Test if <var>SSV</var> contains **any** <var>SSV2</var> values
 - `@return` boolean
+
+### `ssv.at(SSV, index)`
+- Get the value at the specified <var>index</var>
+- Support positive or negative <var>index</var>
+- `@return` string
 
 ### `ssv.blank(SSV)`
 - Test if <var>SSV</var> has no values

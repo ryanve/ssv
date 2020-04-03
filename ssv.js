@@ -44,6 +44,14 @@
     return blank(search) || !diff(search, ssv)
   }
 
+  function at(ssv, i) {
+    i = +i
+    if (i !== i || i === i/0) return empty
+    ssv = split(ssv)
+    if (i < 0) i += ssv.length
+    return ssv[i] || empty
+  }
+
   function concat(ssv, more) {
     return compact(ssv + space + more)
   }
@@ -108,6 +116,7 @@
 
   api["all"] = all
   api["any"] = any
+  api["at"] = at
   api["blank"] = blank
   api["compact"] = compact
   api["need"] = need
