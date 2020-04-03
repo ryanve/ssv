@@ -137,7 +137,6 @@ assert.strictEqual(api.need("  mark  tom  ", "tom"), "mark tom")
 assert.strictEqual(api.need("mark mark", "tom tom"), "mark mark tom tom")
 console.log("#need tests passed")
 
-
 assert.strictEqual(api.xor("", ""), "")
 assert.strictEqual(api.xor("", "mark"), "mark")
 assert.strictEqual(api.xor("mark tom", "mark"), "tom")
