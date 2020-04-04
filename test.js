@@ -174,4 +174,53 @@ assert.strictEqual(ssv.state({
 }), "mark mark travis")
 console.log("#state tests passed")
 
+assert.ok(ssv() instanceof ssv)
+assert.ok(ssv().$ === "")
+assert.ok(ssv(undefined).$ === "")
+assert.ok(ssv(null).$ === "null")
+assert.ok(ssv("182").$ === "182")
+assert.ok(ssv(182).$ === "182")
+assert.ok(ssv().hasOwnProperty("$"))
+console.log("constructor tests passed")
+
+assert.ok(String(ssv(182)) === "182")
+assert.ok(ssv(182).toString() === "182")
+assert.ok(ssv.prototype.toString() === "")
+console.log("toString tests passed")
+
+assert.ok(ssv.prototype.count() === 0)
+assert.ok(ssv.prototype.compact() instanceof ssv)
+assert.ok(ssv.prototype.compact().$ === "")
+assert.ok(ssv.prototype.concat("tom").$ === "tom")
+assert.ok(ssv.prototype.split() instanceof Array)
+assert.ok(ssv.prototype.split().length === 0)
+console.log("prototype tests passed")
+
+assert.ok(ssv().count() === 0)
+assert.ok(ssv("mark tom scott").any("mark"))
+assert.ok(ssv("mark tom scott").count() === 3)
+assert.ok(ssv("mark tom scott").diff("scott").count() === 2)
+assert.ok(ssv("mark tom scott").diff("scott").$ === "mark tom")
+assert.ok(
+  ssv("mark tom scott")
+    .diff("scott scott")
+    .union("travis travis")
+    .$ === "mark tom travis"
+)
+assert.ok(
+  ssv("mark tom scott")
+    .diff("scott")
+    .concat("travis")
+    .diff("tom")
+    .concat("matt")
+    .$ === "mark travis matt"
+)
+assert.ok(
+  ssv("mark tom scott")
+    .diff(ssv.state({ "tom scott": true }))
+    .union(ssv.state({ "travis matt": true }))
+    .$ === "mark travis matt"
+)
+console.log("chaining tests passed")
+
 console.log("All tests passed =)")
