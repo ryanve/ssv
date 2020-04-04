@@ -3,7 +3,9 @@
   typeof module != "undefined" && module.exports ? module.exports = make() : root[name] = make()
 }(this, "ssv", function() {
 
-  var ssv = {}
+  var vacant
+  var $ = "$"
+  var chain = ssv.prototype
   var own = {}.hasOwnProperty
   var word = /\S+/g
   var space = " "
@@ -114,20 +116,48 @@
     return s ? compact(s) : empty
   }
 
-  ssv["all"] = all
-  ssv["any"] = any
-  ssv["at"] = at
-  ssv["blank"] = blank
-  ssv["compact"] = compact
-  ssv["need"] = need
-  ssv["concat"] = concat
-  ssv["count"] = count
-  ssv["diff"] = diff
-  ssv["meet"] = meet
-  ssv["split"] = split
-  ssv["state"] = state
-  ssv["union"] = union
-  ssv["uniq"] = uniq
-  ssv["xor"] = xor
+  /** @constructor */
+  function ssv(set) {
+    var o = this instanceof ssv ? this : new ssv
+    o[$] = set === vacant ? empty : empty + set
+    return o
+  }
+
+  chain.toString = function() {
+    return this instanceof ssv ? empty + this[$] : empty
+  }
+
+  function dot(f) {
+    return function(uno) {
+      var o = this instanceof ssv ? this : new ssv
+      var v = f(o[$], uno)
+      if (typeof v != "string") return v
+      o[$] = v
+      return o
+    }
+  }
+
+  function give(f) {
+    var method = f.name
+    ssv[method] = f
+    chain[method] = dot(f)
+  }
+
+  give(all)
+  give(any)
+  give(at)
+  give(blank)
+  give(compact)
+  give(need)
+  give(concat)
+  give(count)
+  give(diff)
+  give(meet)
+  give(split)
+  give(state)
+  give(union)
+  give(uniq)
+  give(xor)
+
   return ssv
 });

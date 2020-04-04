@@ -78,7 +78,7 @@ ssv.state({
 }) // "mark mark travis"
 ```
 
-## API
+## Static API
 
 ### `ssv.all(SSV, SSV2)`
 - Test if <var>SSV</var> contains **all** <var>SSV2</var> values
@@ -142,3 +142,61 @@ ssv.state({
 ### `ssv.xor(SSV, SSV2)`
 - Get unique values found in either <var>SSV</var> or <var>SSV2</var> but not both
 - `@return` string
+
+## Chaining API
+
+Chaining offers all the static methods in chain syntax
+
+### `ssv(SSV="")`
+- Create an `ssv` object instance
+- <var>SSV</var> defaults to an empty string
+- `@return` object
+
+#### Non-string returns are direct
+
+```js
+ssv("mark tom travis").count() === 3
+ssv("mark tom").concat("travis").count() === 3
+ssv("mark tom travis").any("mark") === true
+ssv().blank() === true
+```
+
+#### strings continue chaining
+
+use `.$` or `.toString()` to get the string value
+
+```js
+ssv() instanceof ssv === true
+ssv("mark").$ === "mark"
+ssv("mark").toString() === "mark"
+ssv("mark").concat("tom").$ === "mark tom"
+ssv("mark").concat("tom").toString() === "mark tom"
+ssv("mark tom scott").diff("scott").concat("travis").$ === "mark tom travis"
+```
+
+#### split if you wanna convert to an array
+
+```js
+ssv("mark tom scott")
+  .diff("scott tom")
+  .concat("travis matt")
+  .split()
+  .forEach(member => console.log(member))
+```
+
+#### prototype calls jumpstart the chain
+
+```js
+ssv.prototype.count() === 0
+ssv.prototype.concat("tom").$ === "tom"
+ssv.prototype.concat("") instanceof ssv === true
+```
+
+#### You can combine static and chaining methods
+
+```js
+ssv("mark tom scott")
+  .diff(ssv.state({ "tom scott": true }))
+  .union(ssv.state({ "travis matt": true }))
+  .$ === "mark travis matt"
+```
