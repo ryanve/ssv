@@ -8,11 +8,12 @@
   var chain = ssv.prototype
   var own = {}.hasOwnProperty
   var word = /\S+/g
+  var match = "".match
   var space = " "
   var empty = ""
 
   function split(set) {
-    return set.match(word) || []
+    return match.call(set, word) || []
   }
 
   function compact(set) {
@@ -24,7 +25,7 @@
   }
 
   function blank(set) {
-    return !set.match(word)
+    return !match.call(set, word)
   }
 
   function any(set, search) {
