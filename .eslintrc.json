@@ -4,10 +4,17 @@
     "commonjs": true,
     "node": true
   },
-  "extends": "eslint:recommended",
   "rules": {
-    "indent": ["error", 2],
+    "no-dupe-keys": ["error"],
+    "no-extra-parens": ["error"],
+    "no-extra-semi": ["error"],
+    "no-func-assign": ["error"],
+    "no-invalid-regexp": ["error"],
+    "no-redeclare": ["error"],
+    "no-tabs": ["error"],
+    "no-unreachable": ["error"],
+    "no-unsafe-negation": ["error"],
     "quotes": ["error", "double"],
-    "no-console": ["off"]
+    "valid-typeof": ["error"]
   }
 }
