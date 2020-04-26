@@ -10,6 +10,10 @@
   var space = " "
   var empty = ""
 
+  function slate(set) {
+    return null == set ? empty : empty + set
+  }
+
   function match(set) {
     return slate(set).match(word)
   }
@@ -113,36 +117,32 @@
     return s || empty
   }
 
-  function slate(set) {
-    set = set instanceof ssv ? set[$] : set
-    switch (typeof set) {
-      case "string":
-      return set
-      case "boolean":
-      case "bigint":
-      case "number":
-      return set + empty
-      case "function":
-      case "object":
-      return set ? swoop(set) : empty
-    } return empty
+  function edit(set, boss) {
+    var yes = empty
+    var noo = empty
+    for (var key in boss)
+      if (own.call(boss, key))
+        boss[key]
+          ? yes += space + key
+          : noo += space + key
+    set = noo ? diff(set, noo) : slate(set)
+    return yes ? uniq(set + space + yes) : set
   }
 
   function state(set) {
-    set = slate(set)
+    set = typeof set == "string" ? set : swoop(set)
     return set ? compact(set) : empty
   }
 
   /** @constructor */
   function ssv(set) {
     var o = this instanceof ssv ? this : new ssv
-    var f = set ? state : slate
-    o[$] = f(set)
+    o[$] = slate(set)
     return o
   }
 
   chain.toString = chain.valueOf = function() {
-    return this instanceof ssv ? slate(this) : empty
+    return this instanceof ssv ? slate(this[$]) : empty
   }
 
   function dot(f) {
@@ -166,6 +166,7 @@
   give(at)
   give(blank)
   give(compact)
+  give(edit)
   give(need)
   give(concat)
   give(count)

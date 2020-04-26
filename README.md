@@ -110,6 +110,14 @@ ssv.state({
 - Count SSV values
 - `@return` number
 
+### `ssv.edit(SSV="", boss={})`
+- Edit an SSV string via an object
+- Keys for falsey values are removed
+- Keys for truthy values are added
+- Result is compact and unique
+- Optimal for editing CSS classes
+- `@return` string
+
 ### `ssv.diff(left="", right="")`
 - Get the difference of 2 SSV strings (values in first not present in second)
 - `@return` string
@@ -122,30 +130,24 @@ ssv.state({
 - Complement <var>set</var> with needed values from <var>more</var>
 - `@return` string
 
-### `ssv.slate(anything="")`
-- Get SSV string from anything
-- Used internally to normalize inputs
-- Uses `typeof` to determine type
-  - `string` returns as is
-  - `number|boolean|bigint` coerce to string
-  - `object|function` delegates to `ssv.swoop`
-  - `undefined|symbol` return `""`
-- Messy whitespace remains messy
+### `ssv.slate(unknown="")`
+- Convert unknown into string
+- `undefined|null` become `""`
 - `@return` string
 
 ### `ssv.split(set)`
 - Split <var>SSV</var> into compact array of values
 - `@return` array
 
-### `ssv.state(anything="")`
-- Get SSV string from <var>state</var> object or string
+### `ssv.state(state={})`
+- Get compact SSV string from state object or string
 - Useful for conditional classnames
 - `@return` string
 
-### `ssv.swoop(object={})`
-- Get SSV string from state object
-- Useful for conditional classnames object
-- Fast and loose
+### `ssv.swoop(state={})`
+- Get like-it-is SSV string from state object
+- `ssv.swoop` is the loop used by `ssv.state`
+- Provided for library developers or extreme optimization
 - `@return` string
 
 ### `ssv.union(left="", right="")`
@@ -166,7 +168,6 @@ Chaining offers all the static methods in chain syntax
 
 ### `ssv(set="")`
 - Create an `ssv` object instance
-- <var>set</var> defaults to an empty string
 - `@return` object
 
 #### Non-string returns are direct
