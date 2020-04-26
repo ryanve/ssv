@@ -3,17 +3,19 @@
   typeof module != "undefined" && module.exports ? module.exports = make() : root[name] = make()
 }(this, "ssv", function() {
 
-  var vacant
   var $ = "$"
   var chain = ssv.prototype
   var own = {}.hasOwnProperty
   var word = /\S+/g
-  var match = "".match
   var space = " "
   var empty = ""
 
+  function match(set) {
+    return slate(set).match(word)
+  }
+
   function split(set) {
-    return match.call(set, word) || []
+    return match(set) || []
   }
 
   function compact(set) {
@@ -25,7 +27,7 @@
   }
 
   function blank(set) {
-    return !match.call(set, word)
+    return !match(set)
   }
 
   function any(set, search) {
@@ -44,7 +46,7 @@
   }
 
   function all(set, search) {
-    return blank(search) || !diff(search, set)
+    return !diff(search, set)
   }
 
   function at(set, i) {
@@ -56,15 +58,15 @@
   }
 
   function concat(set, more) {
-    return compact(set + space + more)
+    return compact(slate(set) + space + slate(more))
   }
 
   function need(set, more) {
-    return compact(set + space + diff(more, set))
+    return compact(slate(set) + space + diff(more, set))
   }
 
   function union(set, more) {
-    return uniq(set + space + more)
+    return uniq(slate(set) + space + slate(more))
   }
 
   function xor(left, right) {
@@ -103,29 +105,44 @@
     return d
   }
 
-  function state(state) {
+  function swoop(set) {
     var s
-    if (typeof state == "string") s = state
-    else for (var key in state) {
-      if (own.call(state, key)) {
-        if (state[key]) {
-          if (s) s += space + key
-          else s = key
-        }
-      }
-    }
-    return s ? compact(s) : empty
+    for (var key in set)
+      if (own.call(set, key) && set[key])
+        s ? s += space + key : s = key
+    return s || empty
+  }
+
+  function slate(set) {
+    set = set instanceof ssv ? set[$] : set
+    switch (typeof set) {
+      case "string":
+      return set
+      case "boolean":
+      case "bigint":
+      case "number":
+      return set + empty
+      case "function":
+      case "object":
+      return set ? swoop(set) : empty
+    } return empty
+  }
+
+  function state(set) {
+    set = slate(set)
+    return set ? compact(set) : empty
   }
 
   /** @constructor */
   function ssv(set) {
     var o = this instanceof ssv ? this : new ssv
-    o[$] = set === vacant ? empty : empty + set
+    var f = set ? state : slate
+    o[$] = f(set)
     return o
   }
 
-  chain.toString = function() {
-    return this instanceof ssv ? empty + this[$] : empty
+  chain.toString = chain.valueOf = function() {
+    return this instanceof ssv ? slate(this) : empty
   }
 
   function dot(f) {
@@ -154,8 +171,10 @@
   give(count)
   give(diff)
   give(meet)
+  give(slate)
   give(split)
   give(state)
+  give(swoop)
   give(union)
   give(uniq)
   give(xor)
