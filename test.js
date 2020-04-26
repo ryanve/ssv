@@ -1,7 +1,6 @@
 var ssv = require("./")
 var assert = require("assert")
 
-
 assert.strictEqual(ssv.split("").length, 0)
 assert.strictEqual(ssv.split(" ").length, 0)
 assert.strictEqual(ssv.split("mark").join("-"), "mark")
@@ -226,13 +225,22 @@ assert.strictEqual(ssv.edit("mark tom scott", {
 console.log("#edit tests passed")
 
 assert.ok(ssv() instanceof ssv)
+assert.ok(new ssv instanceof ssv)
+assert.ok(ssv.call() instanceof ssv)
 assert.ok(ssv().$ === "")
 assert.ok(ssv(undefined).$ === "")
 assert.ok(ssv(null).$ === "")
 assert.ok(ssv("182").$ === "182")
 assert.ok(ssv(182).$ === "182")
 assert.ok(ssv().hasOwnProperty("$"))
+assert.ok(ssv().constructor === ssv)
 console.log("constructor tests passed")
+
+var mark = ssv("mark")
+var nark = ssv()
+assert.ok(mark.diff("mark") !== mark)
+assert.ok(ssv.call(nark) !== nark)
+console.log("immutable tests passed")
 
 assert.ok(String(ssv(182)) === "182")
 assert.ok(ssv(182).toString() === "182")
