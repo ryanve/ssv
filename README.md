@@ -80,21 +80,21 @@ ssv.state({
 
 ## Static API
 
-### `ssv.all(SSV, SSV2)`
-- Test if <var>SSV</var> contains **all** <var>SSV2</var> values
+### `ssv.all(SSV="", search="")`
+- Test if SSV contains **all** <var>search</var> values
 - `@return` boolean
 
-### `ssv.any(SSV, SSV2)`
-- Test if <var>SSV</var> contains **any** <var>SSV2</var> values
+### `ssv.any(SSV="", search="")`
+- Test if SSV contains **any** <var>search</var> values
 - `@return` boolean
 
-### `ssv.at(SSV, index)`
+### `ssv.at(SSV="", index)`
 - Get the value at the specified <var>index</var>
 - Supports positive or negative <var>index</var>
 - `@return` string
 
-### `ssv.blank(SSV)`
-- Test if <var>SSV</var> has no values
+### `ssv.blank(SSV="")`
+- Test if SSV has no values
 - `true` for empty string or whitespace
 - `@return` boolean
 
@@ -102,54 +102,71 @@ ssv.state({
 - Remove excess whitespace from <var>SSV</var>
 - `@return` string
 
-### `ssv.concat(SSV, SSV2)`
+### `ssv.concat(SSV="", more="")`
 - Concatenate 2 SSV strings
 - `@return` string
 
-### `ssv.count(SSV)`
-- Count the number of values in <var>SSV</var>
+### `ssv.count(SSV="")`
+- Count SSV values
 - `@return` number
 
-### `ssv.diff(SSV, SSV2)`
+### `ssv.diff(left="", right="")`
 - Get the difference of 2 SSV strings (values in first not present in second)
 - `@return` string
 
-### `ssv.meet(SSV, SSV2)`
+### `ssv.meet(left="", right="")`
 - Get the intersection of 2 SSV strings (unique values present in both)
 - `@return` string
 
-### `ssv.need(SSV, SSV2)`
-- Complement <var>SSV</var> with needed values from <var>SSV2</var>
+### `ssv.need(SSV="", more="")`
+- Complement <var>set</var> with needed values from <var>more</var>
 - `@return` string
 
-### `ssv.split(SSV)`
+### `ssv.slate(anything="")`
+- Get SSV string from anything
+- Used internally to normalize inputs
+- Uses `typeof` to determine type
+  - `string` returns as is
+  - `number|boolean|bigint` coerce to string
+  - `object|function` delegates to `ssv.swoop`
+  - `undefined|symbol` return `""`
+- Messy whitespace remains messy
+- `@return` string
+
+### `ssv.split(set)`
 - Split <var>SSV</var> into compact array of values
 - `@return` array
 
-### `ssv.state(state={})`
+### `ssv.state(anything="")`
 - Get SSV string from <var>state</var> object or string
 - Useful for conditional classnames
 - `@return` string
 
-### `ssv.union(SSV, SSV2)`
+### `ssv.swoop(object={})`
+- Get SSV string from state object
+- Useful for conditional classnames object
+- Fast and loose
+- `@return` string
+
+### `ssv.union(left="", right="")`
 - Get the union of 2 SSV strings (unique values found in either)
 - `@return` string
 
-### `ssv.uniq(SSV)`
+### `ssv.uniq(set="")`
 - Get unique values found in <var>SSV</var>
 - `@return` string
 
-### `ssv.xor(SSV, SSV2)`
-- Get unique values found in either <var>SSV</var> or <var>SSV2</var> but not both
+### `ssv.xor(left="", right="")`
+- Get unique values found in either <var>left</var> or <var>right</var> but not both
 - `@return` string
 
 ## Chaining API
 
 Chaining offers all the static methods in chain syntax
 
-### `ssv(SSV="")`
+### `ssv(set="")`
 - Create an `ssv` object instance
-- <var>SSV</var> defaults to an empty string
+- <var>set</var> defaults to an empty string
 - `@return` object
 
 #### Non-string returns are direct

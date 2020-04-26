@@ -181,6 +181,8 @@ console.log("#meet tests passed")
 assert.strictEqual(ssv.state(""), "")
 assert.strictEqual(ssv.state(" "), "")
 assert.strictEqual(ssv.state({}), "")
+assert.strictEqual(ssv.state(Symbol()), "")
+assert.strictEqual(ssv.state(Symbol("ignore")), "")
 assert.strictEqual(ssv.state(ssv.state("mark")), "mark")
 assert.strictEqual(ssv.state(ssv.state(" tom ")), "tom")
 assert.strictEqual(ssv.state(ssv.state(" mark matt ")), "mark matt")
@@ -206,7 +208,7 @@ console.log("#state tests passed")
 assert.ok(ssv() instanceof ssv)
 assert.ok(ssv().$ === "")
 assert.ok(ssv(undefined).$ === "")
-assert.ok(ssv(null).$ === "null")
+assert.ok(ssv(null).$ === "")
 assert.ok(ssv("182").$ === "182")
 assert.ok(ssv(182).$ === "182")
 assert.ok(ssv().hasOwnProperty("$"))
@@ -226,6 +228,10 @@ assert.ok(ssv.prototype.split().length === 0)
 console.log("prototype tests passed")
 
 assert.ok(ssv().count() === 0)
+assert.ok(ssv([]).$ === "")
+assert.ok(ssv(true).$ === "true")
+assert.ok(ssv(false).$ === "false")
+assert.ok(ssv([,"blink"]).$ === "1")
 assert.ok(ssv("mark tom scott").any("mark"))
 assert.ok(ssv("mark tom scott").count() === 3)
 assert.ok(ssv("mark tom scott").diff("scott").count() === 2)
@@ -246,9 +252,37 @@ assert.ok(
 )
 assert.ok(
   ssv("mark tom scott")
-    .diff(ssv.state({ "tom scott": true }))
-    .union(ssv.state({ "travis matt": true }))
+    .diff({ "tom scott": true })
+    .union({ "travis matt": true })
     .$ === "mark travis matt"
+)
+assert.ok(
+  ssv("mark")
+    .xor({ "tom": true })
+    .xor({ "tom matt": true })
+    .$ === "mark matt"
+)
+assert.ok(
+  ssv("mark")
+    .meet({ "mark": true })
+    .concat({ "tom": false })
+    .$ === "mark"
+)
+assert.ok(
+  ssv().union({
+      "mark": true,
+      "tom scott": false,
+      "travis matt": true,
+    }).$ === "mark travis matt"
+)
+assert.ok(
+  ssv({ "mark tom scott": true })
+    .diff("scott")
+    .union("travis")
+    .diff("tom")
+    .union("matt")
+    .union(182)
+    .$ === "mark travis matt 182"
 )
 console.log("chaining tests passed")
 
