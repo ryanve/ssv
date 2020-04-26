@@ -225,6 +225,7 @@ assert.strictEqual(ssv.edit("mark tom scott", {
 console.log("#edit tests passed")
 
 assert.ok(ssv() instanceof ssv)
+assert.ok(new ssv instanceof ssv)
 assert.ok(ssv.call() instanceof ssv)
 assert.ok(ssv().$ === "")
 assert.ok(ssv(undefined).$ === "")
