@@ -181,8 +181,6 @@ console.log("#meet tests passed")
 assert.strictEqual(ssv.state(""), "")
 assert.strictEqual(ssv.state(" "), "")
 assert.strictEqual(ssv.state({}), "")
-assert.strictEqual(ssv.state(Symbol()), "")
-assert.strictEqual(ssv.state(Symbol("ignore")), "")
 assert.strictEqual(ssv.state(ssv.state("mark")), "mark")
 assert.strictEqual(ssv.state(ssv.state(" tom ")), "tom")
 assert.strictEqual(ssv.state(ssv.state(" mark matt ")), "mark matt")
@@ -204,6 +202,28 @@ assert.strictEqual(ssv.state({
   "travis": false
 }), "mark mark travis")
 console.log("#state tests passed")
+
+assert.strictEqual(ssv.edit(), "")
+assert.strictEqual(ssv.edit(182), "182")
+assert.strictEqual(ssv.edit(182, {}), "182")
+assert.strictEqual(ssv.edit("mark tom scott", {
+  "tom scott": false,
+  "travis matt": true
+}), "mark travis matt")
+assert.strictEqual(ssv.edit("mark tom scott", {
+  "scott scott": false,
+  "travis travis": true
+}), "mark tom travis")
+assert.strictEqual(ssv.edit("mark mark", {
+  "tom": true,
+}), "mark tom")
+assert.strictEqual(ssv.edit("mark tom scott", {
+  "scott": 0,
+  "travis": 1,
+  "tom": 0,
+  "matt": 1,
+}), "mark travis matt")
+console.log("#edit tests passed")
 
 assert.ok(ssv() instanceof ssv)
 assert.ok(ssv().$ === "")
@@ -231,7 +251,6 @@ assert.ok(ssv().count() === 0)
 assert.ok(ssv([]).$ === "")
 assert.ok(ssv(true).$ === "true")
 assert.ok(ssv(false).$ === "false")
-assert.ok(ssv([,"blink"]).$ === "1")
 assert.ok(ssv("mark tom scott").any("mark"))
 assert.ok(ssv("mark tom scott").count() === 3)
 assert.ok(ssv("mark tom scott").diff("scott").count() === 2)
@@ -251,32 +270,14 @@ assert.ok(
     .$ === "mark travis matt"
 )
 assert.ok(
-  ssv("mark tom scott")
-    .diff({ "tom scott": true })
-    .union({ "travis matt": true })
-    .$ === "mark travis matt"
-)
-assert.ok(
-  ssv("mark")
-    .xor({ "tom": true })
-    .xor({ "tom matt": true })
-    .$ === "mark matt"
-)
-assert.ok(
-  ssv("mark")
-    .meet({ "mark": true })
-    .concat({ "tom": false })
-    .$ === "mark"
-)
-assert.ok(
-  ssv().union({
+  ssv().edit({
       "mark": true,
       "tom scott": false,
       "travis matt": true,
     }).$ === "mark travis matt"
 )
 assert.ok(
-  ssv({ "mark tom scott": true })
+  ssv("mark tom scott")
     .diff("scott")
     .union("travis")
     .diff("tom")
