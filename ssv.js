@@ -4,7 +4,6 @@
 }(this, "ssv", function() {
 
   var $ = "$"
-  var chain = ssv.prototype
   var own = {}.hasOwnProperty
   var word = /\S+/g
   var space = " "
@@ -134,24 +133,24 @@
     return set ? compact(set) : empty
   }
 
-  /** @constructor */
+  function pod() {}
   function ssv(set) {
-    var o = this instanceof ssv ? this : new ssv
-    o[$] = slate(set)
-    return o
+    var fresh = new pod
+    fresh[$] = slate(set)
+    return fresh
   }
 
+  var chain = ssv.prototype = pod.prototype // proxy
+  chain.constructor = ssv // mask pod
   chain.toString = chain.valueOf = function() {
     return this instanceof ssv ? slate(this[$]) : empty
   }
 
-  function dot(f) {
+  function dot(fun) {
     return function(uno) {
-      var o = this instanceof ssv ? this : new ssv
-      var v = f(o[$], uno)
-      if (typeof v != "string") return v
-      o[$] = v
-      return o
+      var was = this instanceof ssv ? this[$] : empty
+      var got = fun(was, uno)
+      return typeof got == "string" ? ssv(got) : got
     }
   }
 
