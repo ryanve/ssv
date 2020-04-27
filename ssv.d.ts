@@ -9,7 +9,6 @@ declare module ssv {
   export function edit(set: any, boss: object): string;
   export function diff(set: any, less: any): string;
   export function meet(left: any, right: any): string;
-  export function need(set: any, more: any): string;
   export function split(set: any): string[];
   export function slate(set: any): string;
   export function state(set: any): string;
