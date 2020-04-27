@@ -64,10 +64,6 @@
     return compact(slate(set) + space + slate(more))
   }
 
-  function need(set, more) {
-    return compact(slate(set) + space + diff(more, set))
-  }
-
   function union(set, more) {
     return uniq(slate(set) + space + slate(more))
   }
@@ -166,7 +162,6 @@
   give(blank)
   give(compact)
   give(edit)
-  give(need)
   give(concat)
   give(count)
   give(diff)
