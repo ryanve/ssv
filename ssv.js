@@ -3,7 +3,7 @@
   typeof module != "undefined" && module.exports ? module.exports = make() : root[name] = make()
 }(this, "ssv", function() {
 
-  var $ = "$"
+  var ssv = {}
   var own = {}.hasOwnProperty
   var word = /\S+/g
   var space = " "
@@ -129,31 +129,9 @@
     return set ? compact(set) : empty
   }
 
-  function pod() {}
-  function ssv(set) {
-    var fresh = new pod
-    fresh[$] = slate(set)
-    return fresh
-  }
-
-  var chain = ssv.prototype = pod.prototype // proxy
-  chain.constructor = ssv // mask pod
-  chain.toString = chain.valueOf = function() {
-    return this instanceof ssv ? slate(this[$]) : empty
-  }
-
-  function dot(fun) {
-    return function(uno) {
-      var was = this instanceof ssv ? this[$] : empty
-      var got = fun(was, uno)
-      return typeof got == "string" ? ssv(got) : got
-    }
-  }
-
   function give(f) {
     var method = f.name
     ssv[method] = f
-    chain[method] = dot(f)
   }
 
   give(all)
