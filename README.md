@@ -1,32 +1,94 @@
 # ssv
-Opensource JavaScript module for working with <b>space-separated values</b>
 
-## Setup
+Opensource JavaScript for <b>space-separated values</b> in [websites](#web) or [Node.js](#node)
+
+### [download](https://raw.githubusercontent.com/ryanve/ssv/master/ssv.js)
+
+```js
+<script src="ssv.js"></script>
+```
+
+### [package](https://www.npmjs.com/package/ssv)
 
 ```
 npm install ssv --save
 ```
 
-## Usage
-
 ```js
 const ssv = require("ssv")
 ```
 
+## methods
+
+- [`ssv.and`](#and)
+- [`ssv.any`](#any)
+- [`ssv.at`](#at)
+- [`ssv.blank`](#blank)
+- [`ssv.count`](#count)
+- [`ssv.edit`](#edit)
+- [`ssv.gum`](#gum)
+- [`ssv.jam`](#jam)
+- [`ssv.not`](#not)
+- [`ssv.or`](#or)
+- [`ssv.say`](#say)
+- [`ssv.split`](#split)
+- [`ssv.swoop`](#swoop)
+- [`ssv.xor`](#xor)
+- [`ssv.yolo`](#yolo)
+
+### `all`
+
+Test if SSV contains **all** search values
+
 ```js
-ssv.all("mark tom travis", "matt") // false
-ssv.all("mark tom travis", "mark") // true
+ssv.all(SSV="", search="")
+```
+
+```js
+ssv.all("mark tom travis", "scott") // false
+ssv.all("mark tom travis", "mark tom") // true
 ssv.all("mark tom travis", "mark scott") // false
-ssv.all("mark tom travis", "mark travis") // true
+```
+
+### `and`
+
+- Get unique values present both in `left` **and** `right`
+- Ideal for intersecting
+
+```js
+ssv.and(left="", right="")
+```
+
+```js
+ssv.and("", "mark") // ""
+ssv.and("mark matt travis", "tom scott") // ""
+ssv.and("mark tom tom", "mark tom travis") // "mark tom"
+```
+
+### `any`
+
+Test if SSV contains **any** search values
+
+```js
+ssv.any(SSV="", search="")
+```
+
+```js
 ssv.any("mark tom travis", "matt") // false
 ssv.any("mark tom travis", "mark") // true
 ssv.any("mark tom travis", "mark scott") // true
 ssv.any("mark tom travis", "mark travis") // true
-ssv.blank("travis") // false
-ssv.blank("      ") // true
-ssv.blank("") // true
-ssv.count("  matt  mark  ") // 2
-ssv.count("matt matt matt") // 3
+```
+
+### `at`
+
+Get the value at `index`
+
+```js
+ssv.at(SSV="", index)
+```
+
+```js
 ssv.at("mark tom travis", 0) // "mark"
 ssv.at("mark tom travis", 1) // "tom"
 ssv.at("mark tom travis", -1) // "travis"
@@ -34,34 +96,180 @@ ssv.at("mark tom travis", -2) // "tom"
 ssv.at("mark tom travis", 5) // ""
 ```
 
+### `blank`
+
+Test if SSV is blank
+
 ```js
-ssv.split("mark tom travis") // ["mark", "tom", "travis"]
-ssv.split(" mark  tom  travis ") // ["mark", "tom", "travis"]
-ssv.compact("  mark   travis   matt ") // "mark travis matt"
-ssv.concat("mark tom", "matt travis") // "mark tom matt travis"
-ssv.concat("mark tom", "tom  travis") // "mark tom tom travis"
-ssv.diff("mark tom travis", "tom") // "mark travis"
-ssv.diff("mark tom tom", "mark matt") // "tom tom"
-ssv.diff("matt matt matt", "") // "matt matt matt"
-ssv.diff("mark mark", "tom tom") // "mark mark"
-ssv.diff("mark tom tom tom", "tom") // "mark"
-ssv.meet("", "mark") // ""
-ssv.meet("mark matt travis", "tom scott") // ""
-ssv.meet("mark tom tom", "mark tom travis") // "mark tom"
-ssv.union("mark tom ", "travis tom") // "mark tom travis"
-ssv.union("mark tom tom", "travis tom") // "mark tom travis"
-ssv.union("matt mark", "matt") // "matt mark"
-ssv.uniq(" travis travis  tom  travis ") // "travis tom"
-ssv.xor("", "mark mark") // "mark"
-ssv.xor("mark tom", "mark") // "tom"
-ssv.xor("mark tom", "travis") // "mark tom travis"
-ssv.xor("mark tom", "travis tom") // "mark travis"
-ssv.xor(" mark tom ", " matt  tom ") // "mark matt"
-ssv.xor(" mark tom tom", "mark mark") // "tom"
-ssv.xor("mark mark", "tom tom") // "mark tom"
+ssv.blank(SSV="")
 ```
 
 ```js
+ssv.blank("travis") // false
+ssv.blank("      ") // true
+ssv.blank("") // true
+ssv.blank(0) // false
+ssv.blank() // true
+```
+
+### `count`
+
+Count SSV values
+
+```js
+ssv.count(SSV="")
+```
+
+```js
+ssv.count("matt matt matt") // 3
+ssv.count("mark      tom ") // 2
+```
+
+### `edit`
+
+- Edit an SSV string via an object
+- Keys for falsey values are removed
+- Keys for truthy values are added
+- Removals process before adds
+- Result is compact and unique
+- Optimal for batch editing CSS classes
+
+```js
+ssv.edit(SSV="", boss={})
+```
+
+```js
+ssv.edit("mark tom travis", {
+  "matt": true,
+  "tom scott": false
+}) // "mark travis matt"
+
+ssv.edit("mark", {
+  "mark travis": true,
+  "travis": false
+}) // "mark travis"
+```
+
+### `gum`
+
+Concatenate with compact space
+
+```js
+ssv.gum(left="", right="")
+```
+
+```js
+ssv.gum("mark tom", "scott travis") // "mark tom scott travis"
+ssv.gum("mark tom", "tom   travis") // "mark tom tom travis"
+```
+
+### `jam`
+
+Compact excess space
+
+```js
+ssv.jam(SSV)
+```
+
+```js
+ssv.jam("  mark  travis   matt ") // "mark travis matt"
+ssv.jam("  matt      ") // "matt"
+ssv.jam("  0     182 ") // "0 182"
+ssv.jam(-182) // "-182"
+ssv.jam(182) // "182"
+ssv.jam(" ") // ""
+ssv.jam(0) // "0"
+ssv.jam() // ""
+```
+
+### `not`
+
+- Get values in `left` that are **not** in `right`
+- Ideal for removing values or diffing
+
+```js
+ssv.not(left="", right="")
+```
+
+```js
+ssv.not("mark tom travis", "tom") // "mark travis"
+ssv.not("mark tom tom", "mark matt") // "tom tom"
+ssv.not("matt matt matt", "") // "matt matt matt"
+ssv.not("mark mark", "tom tom") // "mark mark"
+ssv.not("mark tom tom tom", "tom") // "mark"
+```
+
+### `or`
+
+- Get unique values found in `left` **or** `right` **or** both
+- Ideal for adding values or unioning
+
+```js
+ssv.or(left="", right="")
+```
+
+```js
+ssv.union("mark tom ", "travis tom") // "mark tom travis"
+ssv.union("mark tom tom", "travis tom") // "mark tom travis"
+ssv.union("matt mark", "matt") // "matt mark"
+```
+
+### `say`
+
+Simply stringify unknown
+
+```js
+ssv.say(unknown="")
+```
+
+```js
+ssv.say(undefined) // ""
+ssv.say(null) // ""
+ssv.say(0) // "0"
+ssv.say(NaN) // "NaN"
+ssv.say(182) // "182"
+ssv.say("tom") // "tom"
+ssv.say(true) // "true"
+ssv.say(false) // "false"
+ssv.say(new Number(182), "182")
+ssv.say(new String("tom"), "tom")
+ssv.say(new Boolean(true), "true")
+```
+
+- Used internally when expecting strings
+- Not intended for arrays or plain objects
+- Join arrays instead like `[].join(" ")`
+- Plain objects may use [`ssv.edit`](#edit) [`ssv.state`](#state) [`ssv.swoop`](#swoop)
+
+### `split`
+
+Split SSV into dense array
+
+```js
+ssv.split(SSV)
+```
+
+```js
+ssv.split("mark tom travis") // ["mark", "tom", "travis"]
+ssv.split("     mark  tom ") // ["mark", "tom"]
+ssv.split("0 0  182       ") // ["0", "0", "182"]
+ssv.split(0) // ["0"]
+ssv.split(" ") // []
+ssv.split("") // []
+ssv.split() // []
+```
+
+### `state`
+
+- Get compact SSV string from state object or string
+- Optimal for conditional CSS classes
+
+```js
+ssv.state(state={})
+```
+
+```js
+ssv.state("mark  tom  ") // "mark tom"
 ssv.state({
   "mark travis": true,
   "matt": true,
@@ -75,82 +283,54 @@ ssv.state({
 }) // "mark mark travis"
 ```
 
-## Methods
+### `swoop`
 
-### `ssv.all(SSV="", search="")`
-- Test if SSV contains **all** <var>search</var> values
-- `@return` boolean
-
-### `ssv.any(SSV="", search="")`
-- Test if SSV contains **any** <var>search</var> values
-- `@return` boolean
-
-### `ssv.at(SSV="", index)`
-- Get the value at the specified <var>index</var>
-- Supports positive or negative <var>index</var>
-- `@return` string
-
-### `ssv.blank(SSV="")`
-- Test if SSV has no values
-- `true` for empty string or whitespace
-- `@return` boolean
-
-### `ssv.compact(SSV)`
-- Remove excess whitespace from <var>SSV</var>
-- `@return` string
-
-### `ssv.concat(SSV="", more="")`
-- Concatenate 2 SSV strings
-- `@return` string
-
-### `ssv.count(SSV="")`
-- Count SSV values
-- `@return` number
-
-### `ssv.edit(SSV="", boss={})`
-- Edit an SSV string via an object
-- Keys for falsey values are removed
-- Keys for truthy values are added
-- Result is compact and unique
-- Optimal for editing CSS classes
-- `@return` string
-
-### `ssv.diff(left="", right="")`
-- Get the difference of 2 SSV strings (values in first not present in second)
-- `@return` string
-
-### `ssv.meet(left="", right="")`
-- Get the intersection of 2 SSV strings (unique values present in both)
-- `@return` string
-
-### `ssv.slate(unknown="")`
-- Convert unknown into string
-- `undefined|null` become `""`
-- `@return` string
-
-### `ssv.split(set)`
-- Split <var>SSV</var> into compact array of values
-- `@return` array
-
-### `ssv.state(state={})`
-- Get compact SSV string from state object or string
-- Useful for conditional classnames
-- `@return` string
-
-### `ssv.swoop(state={})`
 - Get like-it-is SSV string from state object
 - `ssv.swoop` is the loop used by `ssv.state`
 - Provided for library developers or extreme optimization
-- `@return` string
 
-### `ssv.union(left="", right="")`
-- Get the union of 2 SSV strings (unique values found in either)
-- `@return` string
+```js
+ssv.swoop(state={})
+```
 
-### `ssv.uniq(set="")`
-- Get unique values found in <var>SSV</var>
-- `@return` string
+```js
+ssv.state({
+  "  mark  mark ": true,
+  "  tom": false
+}) // "  mark  mark "
+```
 
-### `ssv.xor(left="", right="")`
-- Get unique values found in either <var>left</var> or <var>right</var> but not both
-- `@return` string
+### `xor`
+
+Get unique values found in either `left` **or** `right` but **not** both
+
+```js
+ssv.xor(left="", right="")
+```
+
+```js
+ssv.xor("", "mark mark") // "mark"
+ssv.xor("mark tom", "mark") // "tom"
+ssv.xor("mark tom", "travis") // "mark tom travis"
+ssv.xor("mark tom", "travis tom") // "mark travis"
+ssv.xor("mark tom", "matt  tom ") // "mark matt"
+ssv.xor("mark tom tom", "mark mark") // "tom"
+ssv.xor("mark mark", "tom tom") // "mark tom"
+```
+
+### `yolo`
+
+- Get unique SSV values
+- Hella fast unique loop
+- Be unique because yolo
+- Case sensitive
+
+```js
+ssv.yolo(SSV="")
+```
+
+```js
+ssv.yolo("tom tom travis") // "tom travis"
+ssv.yolo("Na na na na   ") // "Na na"
+ssv.yolo("Na na na na".toLowerCase()) // "na"
+```

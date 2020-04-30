@@ -9,19 +9,19 @@
   var space = " "
   var empty = ""
 
-  function slate(set) {
-    return null == set ? empty : empty + set
+  function say(set) {
+    return set == null ? empty : empty + set
   }
 
   function match(set) {
-    return slate(set).match(word)
+    return say(set).match(word)
   }
 
   function split(set) {
     return match(set) || []
   }
 
-  function compact(set) {
+  function jam(set) {
     return split(set).join(space)
   }
 
@@ -49,7 +49,7 @@
   }
 
   function all(set, search) {
-    return !diff(search, set)
+    return !not(search, set)
   }
 
   function at(set, i) {
@@ -60,23 +60,23 @@
     return set[i] || empty
   }
 
-  function concat(set, more) {
-    return compact(slate(set) + space + slate(more))
+  function gum(set, more) {
+    return jam(say(set) + space + say(more))
   }
 
-  function union(set, more) {
-    return uniq(slate(set) + space + slate(more))
+  function or(set, more) {
+    return yolo(say(set) + space + say(more))
   }
 
   function xor(left, right) {
-    return union(diff(left, right), diff(right, left))
+    return or(not(left, right), not(right, left))
   }
 
-  function meet(left, right) {
-    return diff(union(left, right), xor(left, right))
+  function and(left, right) {
+    return not(or(left, right), xor(left, right))
   }
 
-  function uniq(set) {
+  function yolo(set) {
     set = split(set)
     var n = 0
     var u = []
@@ -88,7 +88,7 @@
     return u.join(space)
   }
 
-  function diff(set, less) {
+  function not(set, less) {
     var d = empty
     set = split(set)
     less = split(less)
@@ -120,13 +120,13 @@
         boss[key]
           ? yes += space + key
           : noo += space + key
-    set = noo ? diff(set, noo) : slate(set)
-    return yes ? uniq(set + space + yes) : set
+    set = noo ? not(set, noo) : say(set)
+    return yes ? yolo(set + space + yes) : set
   }
 
   function state(set) {
     set = typeof set == "string" ? set : swoop(set)
-    return set ? compact(set) : empty
+    return set ? jam(set) : empty
   }
 
   function give(f) {
@@ -135,22 +135,22 @@
   }
 
   give(all)
+  give(and)
   give(any)
   give(at)
   give(blank)
-  give(compact)
-  give(concat)
   give(count)
-  give(diff)
   give(edit)
-  give(meet)
-  give(slate)
+  give(gum)
+  give(jam)
+  give(not)
+  give(or)
+  give(say)
   give(split)
   give(state)
   give(swoop)
-  give(union)
-  give(uniq)
   give(xor)
+  give(yolo)
 
   return ssv
 })
