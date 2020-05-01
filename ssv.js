@@ -120,13 +120,15 @@
         boss[key]
           ? yes += space + key
           : noo += space + key
-    set = noo ? not(set, noo) : say(set)
-    return yes ? yolo(set + space + yes) : set
+    var eco = yes === set
+    var ace = eco || !noo || set === empty
+    set = ace ? set : not(set, noo)
+    return !yes || eco ? yolo(set) : or(set, yes)
   }
 
   function state(set) {
     set = typeof set == "string" ? set : swoop(set)
-    return set ? jam(set) : empty
+    return set ? yolo(set) : empty
   }
 
   function give(f) {
