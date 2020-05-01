@@ -294,7 +294,7 @@ ssv.swoop(state={})
 ```
 
 ```js
-ssv.state({
+ssv.swoop({
   "  mark  mark ": true,
   "  tom": false
 }) // "  mark  mark "
