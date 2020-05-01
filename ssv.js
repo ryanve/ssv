@@ -104,14 +104,6 @@
     return d
   }
 
-  function swoop(set) {
-    var s
-    for (var key in set)
-      if (own.call(set, key) && set[key])
-        s ? s += space + key : s = key
-    return s || empty
-  }
-
   function edit(set, boss) {
     var yes = empty
     var noo = empty
@@ -126,9 +118,10 @@
     return !yes || eco ? yolo(set) : or(set, yes)
   }
 
-  function state(set) {
-    set = typeof set == "string" ? set : swoop(set)
-    return set ? yolo(set) : empty
+  function state(set) { 
+    return typeof set == "string"
+      ? set ? yolo(set) : empty
+      : edit(empty, set)
   }
 
   function give(f) {
@@ -150,7 +143,6 @@
   give(say)
   give(split)
   give(state)
-  give(swoop)
   give(xor)
   give(yolo)
 

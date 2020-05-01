@@ -32,7 +32,6 @@ const ssv = require("ssv")
 - [`ssv.or`](#or)
 - [`ssv.say`](#say)
 - [`ssv.split`](#split)
-- [`ssv.swoop`](#swoop)
 - [`ssv.xor`](#xor)
 - [`ssv.yolo`](#yolo)
 
@@ -239,7 +238,7 @@ ssv.say(new Boolean(true), "true")
 - Used internally when expecting strings
 - Not intended for arrays or plain objects
 - Join arrays instead like `[].join(" ")`
-- Plain objects may use [`ssv.edit`](#edit) [`ssv.state`](#state) [`ssv.swoop`](#swoop)
+- Plain objects may use [`ssv.edit`](#edit) or [`ssv.state`](#state)
 
 ### `split`
 
@@ -281,23 +280,6 @@ ssv.state({
   "mark travis": true,
   "travis": false
 }) // "mark mark travis"
-```
-
-### `swoop`
-
-- Get like-it-is SSV string from state object
-- `ssv.swoop` is the loop used by `ssv.state`
-- Provided for library developers or extreme optimization
-
-```js
-ssv.swoop(state={})
-```
-
-```js
-ssv.swoop({
-  "  mark  mark ": true,
-  "  tom": false
-}) // "  mark  mark "
 ```
 
 ### `xor`
