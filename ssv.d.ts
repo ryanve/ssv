@@ -13,7 +13,6 @@ declare module ssv {
   export function say(set: any): string;
   export function split(set: any): string[];
   export function state(set: any): string;
-  export function swoop(set: object): string;
   export function xor(left: any, right: any): string;
   export function yolo(set: any): string;
 }
