@@ -1,6 +1,6 @@
 # ssv
 
-Opensource JavaScript for <b>space-separated values</b> in [websites](#web) or [Node.js](#node)
+Opensource JavaScript for <b>space-separated values</b> in [websites](#download) or [Node.js](#package)
 
 ### [download](https://raw.githubusercontent.com/ryanve/ssv/master/ssv.js)
 
