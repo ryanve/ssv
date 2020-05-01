@@ -169,7 +169,7 @@ ok(ssv.state({}) === "")
 ok(ssv.state(ssv.state("mark")) === "mark")
 ok(ssv.state(ssv.state(" tom ")) === "tom")
 ok(ssv.state(ssv.state(" mark matt ")) === "mark matt")
-ok(ssv.state(ssv.state("travis travis")) === "travis travis")
+ok(ssv.state(ssv.state("travis travis")) === "travis")
 ok(ssv.state({
   "mark travis": true,
   "matt": true,
@@ -185,12 +185,13 @@ ok(ssv.state({
   "mark": true,
   "mark travis": true,
   "travis": false
-}) === "mark mark travis")
+}) === "mark travis")
 console.log("#state tests passed")
 
 ok(ssv.edit() === "")
 ok(ssv.edit(182) === "182")
 ok(ssv.edit(182, {}) === "182")
+ok(ssv.edit("mark ", {}) === "mark")
 ok(ssv.edit("mark tom scott", {
   "tom scott": false,
   "travis matt": true

@@ -261,7 +261,7 @@ ssv.split() // []
 
 ### `state`
 
-- Get compact SSV string from state object or string
+- Get unique compact SSV string from state object or string
 - Optimal for conditional CSS classes
 
 ```js
