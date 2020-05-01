@@ -81,9 +81,12 @@
     var n = 0
     var u = []
     var l = set.length
-    outer:for (var i = 0; i < l; i++) {
-      for (var j = n; j--;) if (set[i] === u[j]) continue outer
-      u[n++] = set[i]
+    var i = 0
+    outer:while (i < l) {
+      var v = set[i++]
+      var j = n
+      while (j--) if (u[j] === v) continue outer
+      u[n++] = v
     }
     return u.join(space)
   }
@@ -118,7 +121,7 @@
     return !yes || eco ? yolo(set) : or(set, yes)
   }
 
-  function state(set) { 
+  function state(set) {
     return typeof set == "string"
       ? set ? yolo(set) : empty
       : edit(empty, set)
