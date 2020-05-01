@@ -209,9 +209,9 @@ ssv.or(left="", right="")
 ```
 
 ```js
-ssv.union("mark tom ", "travis tom") // "mark tom travis"
-ssv.union("mark tom tom", "travis tom") // "mark tom travis"
-ssv.union("matt mark", "matt") // "matt mark"
+ssv.or("mark tom ", "travis tom") // "mark tom travis"
+ssv.or("mark tom tom", "travis tom") // "mark tom travis"
+ssv.or("matt mark", "matt") // "matt mark"
 ```
 
 ### `say`
@@ -261,7 +261,7 @@ ssv.split() // []
 
 ### `state`
 
-- Get compact SSV string from state object or string
+- Get unique compact SSV string from state object or string
 - Optimal for conditional CSS classes
 
 ```js
