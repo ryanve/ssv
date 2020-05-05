@@ -261,6 +261,8 @@ ssv.split() // []
 ### `state`
 
 - Get unique compact SSV string from state object or string
+- Shorthand for [`ssv.edit("", state)`](#edit) if nonstring
+- Delegates to [`ssv.yolo(state)`](#yolo) if string
 - Optimal for conditional CSS classes
 
 ```js
