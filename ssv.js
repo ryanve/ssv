@@ -1,8 +1,6 @@
 /** @preserve npm.im/ssv */
-!function(root, name, make) {
-  typeof module != "undefined" && module.exports ? module.exports = make() : root[name] = make()
-}(this, "ssv", function() {
-
+!function(root) {
+  var name = "ssv"
   var ssv = {}
   var own = {}.hasOwnProperty
   var word = /\S+/g
@@ -54,7 +52,7 @@
 
   function at(set, i) {
     i = +i
-    if (i !== i || i === i/0) return empty
+    if (i != i || i === i/0) return empty
     set = split(set)
     if (i < 0) i += set.length
     return set[i] || empty
@@ -123,9 +121,7 @@
   }
 
   function state(set) {
-    return typeof set == "string"
-      ? set ? yolo(set) : empty
-      : edit(empty, set)
+    return empty === set ? set : edit(empty, set)
   }
 
   function give(f) {
@@ -150,5 +146,7 @@
   give(xor)
   give(yolo)
 
-  return ssv
-})
+  typeof module != "undefined" && module.exports
+    ? module.exports = ssv
+    : root[name] = ssv
+}(this)
