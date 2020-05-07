@@ -192,6 +192,8 @@ ok(ssv.edit() === "")
 ok(ssv.edit(182) === "182")
 ok(ssv.edit(182, {}) === "182")
 ok(ssv.edit("mark ", {}) === "mark")
+ok(ssv.edit("mark tom scott", "mark tom travis")
+  === ssv.or("mark tom scott", "mark tom travis"))
 ok(ssv.edit("mark tom scott", {
   "tom scott": false,
   "travis matt": true

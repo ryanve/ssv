@@ -110,7 +110,8 @@
   function edit(set, boss) {
     var yes = empty
     var noo = empty
-    for (var key in boss)
+    if (typeof boss == "string") yes = boss
+    else for (var key in boss)
       if (own.call(boss, key))
         boss[key]
           ? yes += space + key
