@@ -64,6 +64,11 @@ ssv.and("mark matt travis", "tom scott") // ""
 ssv.and("mark tom tom", "mark tom travis") // "mark tom"
 ```
 
+```js
+let many = ["mark tom", "mark travis", "mark matt"]
+many.reduce(ssv.and) // "mark"
+```
+
 ### `any`
 
 Test if SSV contains **any** search values
@@ -126,12 +131,14 @@ ssv.count("mark      tom ") // 2
 
 ### `edit`
 
-- Edit an SSV string via an object
+- Edit an SSV string via an object or string
+- Optimal for batch editing CSS classes
 - Keys for falsey values are removed
 - Keys for truthy values are added
 - Removals process before adds
 - Result is compact and unique
-- Optimal for batch editing CSS classes
+- Like [`ssv.or`](#or) if `boss` is string
+- [`ssv.state`](#state) uses [`ssv.edit`](#edit)
 
 ```js
 ssv.edit(SSV="", boss={})
@@ -149,6 +156,19 @@ ssv.edit("mark", {
 }) // "mark travis"
 ```
 
+```js
+ssv.edit("mark tom scott", Object.assign(
+  { scott: false },
+  { travis: true }
+)) // "mark tom travis"
+```
+
+```js
+let bosses = [/* objects or strings */]
+bosses.reduce(ssv.edit, "") // forward
+bosses.reduceRight(ssv.edit, "") // backward
+```
+
 ### `gum`
 
 Concatenate with compact space
@@ -160,6 +180,11 @@ ssv.gum(left="", right="")
 ```js
 ssv.gum("mark tom", "scott travis") // "mark tom scott travis"
 ssv.gum("mark tom", "tom   travis") // "mark tom tom travis"
+```
+
+```js
+let many = ["tom tom", null, "travis travis", ""]
+many.reduce(ssv.gum) // "tom tom travis travis"
 ```
 
 ### `jam`
@@ -198,6 +223,11 @@ ssv.not("mark mark", "tom tom") // "mark mark"
 ssv.not("mark tom tom tom", "tom") // "mark"
 ```
 
+```js
+let many = ["mark tom", "mark travis", "mark matt"]
+many.reduce(ssv.not) // "tom"
+```
+
 ### `or`
 
 - Get unique values found in `left` **or** `right` **or** both
@@ -211,6 +241,11 @@ ssv.or(left="", right="")
 ssv.or("mark tom ", "travis tom") // "mark tom travis"
 ssv.or("mark tom tom", "travis tom") // "mark tom travis"
 ssv.or("matt mark", "matt") // "matt mark"
+```
+
+```js
+let many = ["mark tom", "mark travis", "mark matt"]
+many.reduce(ssv.or) // "mark tom travis matt"
 ```
 
 ### `say`
@@ -284,6 +319,11 @@ ssv.state({
 }) // "mark mark travis"
 ```
 
+```js
+let states = [/* objects or strings */]
+ssv.yolo(states.map(ssv.state).join(" "))
+```
+
 ### `xor`
 
 Get unique values found in either `left` **or** `right` but **not** both
@@ -300,6 +340,12 @@ ssv.xor("mark tom", "travis tom") // "mark travis"
 ssv.xor("mark tom", "matt  tom ") // "mark matt"
 ssv.xor("mark tom tom", "mark mark") // "tom"
 ssv.xor("mark mark", "tom tom") // "mark tom"
+```
+
+```js
+let many = ["mark tom", "mark travis", "mark matt"]
+many.reduce(ssv.xor) // "tom travis mark matt"
+many.reduceRight(ssv.xor) // "matt travis mark tom"
 ```
 
 ### `yolo`
