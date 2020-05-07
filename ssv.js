@@ -40,7 +40,9 @@
     while (j < n) {
       var i = l
       var v = set[j++]
-      while (i--) if (v === search[i]) return true
+      while (i--)
+        if (v === search[i])
+          return true
     }
     return false
   }
@@ -66,11 +68,15 @@
   }
 
   function xor(left, right) {
-    return or(not(left, right), not(right, left))
+    return or(
+      not(left, right),
+      not(right, left))
   }
 
   function and(left, right) {
-    return not(or(left, right), xor(left, right))
+    return not(
+      or(left, right),
+      xor(left, right))
   }
 
   function yolo(set) {
@@ -82,7 +88,9 @@
     outer:while (i < l) {
       var v = set[i++]
       var j = n
-      while (j--) if (u[j] === v) continue outer
+      while (j--)
+        if (u[j] === v)
+          continue outer
       u[n++] = v
     }
     return u.join(space)
@@ -98,7 +106,9 @@
     outer:while (j < n) {
       var i = l
       var v = set[j++]
-      while (i--) if (v === less[i]) continue outer
+      while (i--)
+        if (v === less[i])
+          continue outer
       d ? d += space + v : d = v
     }
     return d
@@ -107,7 +117,8 @@
   function edit(set, boss) {
     var yes = empty
     var noo = empty
-    if (typeof boss == "string") yes = boss
+    if (typeof boss == "string")
+      yes = boss
     else for (var key in boss)
       if (own.call(boss, key))
         boss[key]
@@ -148,7 +159,8 @@
   give(xor)
   give(yolo)
 
-  typeof module != "undefined" && module.exports
+  typeof module != "undefined"
+    && module.exports
     ? module.exports = ssv
     : root["ssv"] = ssv
 }(this)
