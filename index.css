@@ -1,6 +1,6 @@
-::selection { color: Black; background: Gold }
-html { color: #333; background: WhiteSmoke }
-[href] { color: Indigo; text-decoration-color: DarkViolet }
+::selection { color: black; background: gold }
+html { color: #444; background: whitesmoke }
+[href] { color: purple; text-decoration-color: darkmagenta }
 
 * { box-sizing: border-box }
 
@@ -19,4 +19,11 @@ body {
 dfn {
   font-style: inherit;
   font-weight: bold;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+  line-height: 2;
+  margin-bottom: 2rem;
 }
