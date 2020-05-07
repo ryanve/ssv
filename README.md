@@ -11,7 +11,7 @@ Opensource JavaScript for <b>space-separated values</b> in [websites](#download)
 ### [package](https://www.npmjs.com/package/ssv)
 
 ```
-npm install ssv --save
+npm install ssv
 ```
 
 ```js
