@@ -1,6 +1,5 @@
 /** @preserve npm.im/ssv */
 !function(root) {
-  var name = "ssv"
   var ssv = {}
   var own = {}.hasOwnProperty
   var word = /\S+/g
@@ -52,7 +51,7 @@
 
   function at(set, i) {
     i = +i
-    if (i != i || i === i/0) return empty
+    if (i != i || i == i/0) return empty
     set = split(set)
     if (i < 0) i += set.length
     return set[i] || empty
@@ -114,14 +113,17 @@
         boss[key]
           ? yes += space + key
           : noo += space + key
-    var eco = yes === set
-    var ace = eco || !noo || set === empty
+    var eco = set === yes
+    var emo = set === empty
+    var ace = eco || emo || !noo
     set = ace ? set : not(set, noo)
-    return !yes || eco ? yolo(set) : or(set, yes)
+    return !yes || eco
+      ? emo ? set : yolo(set)
+      : or(set, yes)
   }
 
   function state(set) {
-    return empty === set ? set : edit(empty, set)
+    return edit(empty, set)
   }
 
   function give(f) {
@@ -148,5 +150,5 @@
 
   typeof module != "undefined" && module.exports
     ? module.exports = ssv
-    : root[name] = ssv
+    : root["ssv"] = ssv
 }(this)
