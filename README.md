@@ -20,6 +20,7 @@ const ssv = require("ssv")
 
 ## methods
 
+- [`ssv.all`](#all)
 - [`ssv.and`](#and)
 - [`ssv.any`](#any)
 - [`ssv.at`](#at)
@@ -32,6 +33,7 @@ const ssv = require("ssv")
 - [`ssv.or`](#or)
 - [`ssv.say`](#say)
 - [`ssv.split`](#split)
+- [`ssv.state`](#state)
 - [`ssv.xor`](#xor)
 - [`ssv.yolo`](#yolo)
 
