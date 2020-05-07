@@ -20,6 +20,7 @@ const ssv = require("ssv")
 
 ## methods
 
+- [`ssv.all`](#all)
 - [`ssv.and`](#and)
 - [`ssv.any`](#any)
 - [`ssv.at`](#at)
