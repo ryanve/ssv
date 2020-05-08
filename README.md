@@ -328,7 +328,8 @@ ssv.yolo(states.map(ssv.state).join(" "))
 
 ### `xor`
 
-Get unique values found in either `left` **or** `right` but **not** both
+- Get unique values found in either `left` **or** `right` but **not** both
+- Ideal for toggling values
 
 ```js
 ssv.xor(left="", right="")
@@ -339,7 +340,7 @@ ssv.xor("", "mark mark") // "mark"
 ssv.xor("mark tom", "mark") // "tom"
 ssv.xor("mark tom", "travis") // "mark tom travis"
 ssv.xor("mark tom", "travis tom") // "mark travis"
-ssv.xor("mark tom", "matt  tom ") // "mark matt"
+ssv.xor("mark tom travis", "tom matt") // "mark travis matt"
 ssv.xor("mark tom tom", "mark mark") // "tom"
 ssv.xor("mark mark", "tom tom") // "mark tom"
 ```
