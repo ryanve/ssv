@@ -31,7 +31,8 @@
   }
 
   function any(set, search) {
-    return count(not(set, search)) < count(set)
+    var mod = not(set, search)
+    return count(set) > count(mod)
   }
 
   function all(set, search) {
