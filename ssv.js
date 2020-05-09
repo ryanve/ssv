@@ -75,7 +75,7 @@
 
   function and(left, right) {
     return not(
-      or(left, right),
+      yolo(left),
       xor(left, right))
   }
 
