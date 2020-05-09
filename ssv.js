@@ -31,20 +31,7 @@
   }
 
   function any(set, search) {
-    search = split(search)
-    var l = search.length
-    if (!l) return false
-    set = split(set)
-    var n = set.length
-    var j = 0
-    while (j < n) {
-      var i = l
-      var v = set[j++]
-      while (i--)
-        if (v === search[i])
-          return true
-    }
-    return false
+    return count(not(set, search)) < count(set)
   }
 
   function all(set, search) {
