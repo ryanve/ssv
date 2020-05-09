@@ -1,6 +1,10 @@
 # ssv
 
-Opensource JavaScript for <b>space-separated values</b> in [websites](#download) or [Node.js](#package)
+- [Opensource](LICENSE.txt) JavaScript for space separated values
+- Uses [simple methods](#methods) you can [explore online](https://ryanve.github.io/ssv/)
+- [Coded](ssv.js) universally for [websites](#download) or [Node.js](#package)
+- Compresses `<600B`
+- [Fully tested](test.js)
 
 ### [download](https://raw.githubusercontent.com/ryanve/ssv/master/ssv.js)
 
