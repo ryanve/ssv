@@ -1,6 +1,7 @@
-::selection { color: black; background: gold }
-html { color: #444; background: whitesmoke }
-[href] { color: purple; text-decoration-color: darkmagenta }
+::selection { color: black; background: lime }
+html { color: #111; background: violet }
+[href] { color: #111; background: coral }
+:focus { outline-color: seashell }
 
 * { box-sizing: border-box }
 
