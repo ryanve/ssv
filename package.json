@@ -21,7 +21,7 @@
     "url": "https://github.com/ryanve/ssv/issues"
   },
   "devDependencies": {
-    "eslint": "^6.8.0"
+    "eslint": "^8.9.0"
   },
   "keywords": [
     "ssv",
